@@ -5,6 +5,14 @@ class_name Player
 var game_timer: Timer
 @onready var camera: Camera2D = $Camera2D
 @onready var hurtbox: Area2D = $Hurtbox
+@onready var jump_sound: AudioStreamPlayer = $Audio/jump_sound
+@onready var rewind: AudioStreamPlayer = $Audio/rewind
+@onready var power_up: AudioStreamPlayer = $Audio/power_up
+@onready var walk: AudioStreamPlayer = $Audio/walk
+@onready var dash: AudioStreamPlayer = $Audio/dash
+
+
+
 
 @export var player_ui: CanvasLayer
 @export_category("Upgrades")
@@ -41,6 +49,8 @@ func _physics_process(delta: float) -> void:
 	velocity.x = lerp(velocity.x, x_input * max_speed, velocity_weight)
 	
 	if x_input:
+		if !walk.playing and is_on_floor():
+			walk.play()
 		look_dir_x = int(x_input)
 		#print(look_dir_x)
 	if x_input > 0: # maybe these need to be inside if x_input?
@@ -69,19 +79,20 @@ func _physics_process(delta: float) -> void:
 		
 		gravity = lerp(gravity, MAX_GRAVITY, 12.0 * delta)
 	if Input.is_action_just_pressed("jump"):
-		
 		if JumpBufferTimer.is_stopped():
 			JumpBufferTimer.start()
 			print("jump buffer started")
 	
 	if !JumpBufferTimer.is_stopped():
 		if is_on_floor() or !CoyoteTimer.is_stopped():
+			jump_sound.play()
 			velocity.y = JUMP_HEIGHT
 			jumps_done = 1
 			JumpBufferTimer.stop()
 			CoyoteTimer.stop()
 			coyote_activated = true
 		elif jumps_done < max_jumps:
+			jump_sound.play()
 			velocity.y = JUMP_HEIGHT
 			jumps_done += 1
 			JumpBufferTimer.stop()
@@ -106,6 +117,7 @@ func _input(_event: InputEvent) -> void:
 			print("3rd skill pressed")
 			
 	if can_tp and Input.is_action_just_pressed("teleport_dash"):
+		dash.play()
 		if look_dir_x == 1:
 			if %RightRaycast.get_collider() != null and %RightRaycast.get_collider().is_in_group("solid"):
 				return

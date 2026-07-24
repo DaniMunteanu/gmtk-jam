@@ -20,6 +20,7 @@ func _ready() -> void:
 
 func activate():
 	if !is_on_cooldown and !is_active:
+		player.power_up.play()
 		print("UPGRADE ACTIVATED!")
 		reduce_time.emit(time_price)
 		is_active = true
