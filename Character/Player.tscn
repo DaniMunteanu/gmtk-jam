@@ -9,6 +9,12 @@
 [ext_resource type="Script" uid="uid://dtcrq6h6ajx5k" path="res://Character/upgrade_two.gd" id="5_v6d5b"]
 [ext_resource type="Script" uid="uid://bn85yctxwce5g" path="res://Character/upgrade_three.gd" id="6_55lj8"]
 [ext_resource type="PackedScene" uid="uid://c8qqhfsn3ov55" path="res://UI/playerUI.tscn" id="7_5ydrh"]
+[ext_resource type="AudioStream" uid="uid://c132wqs0cty4s" path="res://Audio/jump_pixel.wav" id="10_o1y46"]
+[ext_resource type="AudioStream" uid="uid://du2m11ymtavrw" path="res://Audio/time_rewind.wav" id="11_qolio"]
+[ext_resource type="AudioStream" uid="uid://cdao1wfvyhy8b" path="res://Audio/dash_ability.wav" id="12_28ti7"]
+[ext_resource type="AudioStream" uid="uid://batc8t7a266a3" path="res://Audio/power_activate.wav" id="13_fo5vu"]
+[ext_resource type="AudioStream" uid="uid://cikw73k5asp2m" path="res://Audio/stone_pixelated_footstep.wav" id="14_p4yhq"]
+[ext_resource type="AudioStream" uid="uid://bja10gpm03ngb" path="res://Audio/hurt.wav" id="15_fo5vu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d703b"]
 atlas = ExtResource("2_o1y46")
@@ -150,6 +156,31 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=611556268]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_ragau")
+
+[node name="Audio" type="Node" parent="." unique_id=679523313]
+
+[node name="jump_sound" type="AudioStreamPlayer" parent="Audio" unique_id=1344285226]
+stream = ExtResource("10_o1y46")
+volume_db = -2.909
+
+[node name="rewind" type="AudioStreamPlayer" parent="Audio" unique_id=1394585585]
+process_mode = 2
+stream = ExtResource("11_qolio")
+
+[node name="dash" type="AudioStreamPlayer" parent="Audio" unique_id=1949466432]
+stream = ExtResource("12_28ti7")
+
+[node name="power_up" type="AudioStreamPlayer" parent="Audio" unique_id=2063204086]
+stream = ExtResource("13_fo5vu")
+
+[node name="walk" type="AudioStreamPlayer" parent="Audio" unique_id=800831198]
+stream = ExtResource("14_p4yhq")
+volume_db = -10.41
+
+[node name="game_over" type="AudioStreamPlayer" parent="Audio" unique_id=40543535]
+
+[node name="hurt" type="AudioStreamPlayer" parent="Audio" unique_id=1011763043]
+stream = ExtResource("15_fo5vu")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

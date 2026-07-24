@@ -6,8 +6,11 @@ class_name HourglassUI
 @onready var sand_progress_up: TextureProgressBar = $SandProgressUp
 @onready var sand_progress_down: TextureProgressBar = $SandProgressDown
 
+
+
 func _ready() -> void:
 	sand_falling.play()
+
 
 func update_sand(time_left: float):
 	sand_progress_up.value = time_left

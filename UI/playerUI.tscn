@@ -14,9 +14,10 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_s7eya"]
 font_size = 48
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1722666215 node_paths=PackedStringArray("label_arr", "upgrade_arr")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1722666215 node_paths=PackedStringArray("label_arr", "btn_arr", "upgrade_arr")]
 script = ExtResource("1_225y7")
 label_arr = [NodePath("Upgrades/Label"), NodePath("Upgrades/Label2"), NodePath("Upgrades/Label3")]
+btn_arr = [null, null, null]
 upgrade_arr = [null, null, null]
 
 [node name="Upgrades" type="HBoxContainer" parent="." unique_id=1091525042]
@@ -35,11 +36,23 @@ text = "     Press 1
 for double jump"
 label_settings = SubResource("LabelSettings_225y7")
 
+[node name="TextureButton" type="TextureButton" parent="Upgrades/Label" unique_id=30013222]
+layout_mode = 0
+offset_left = 164.0
+offset_right = 164.0
+offset_bottom = 53.0
+
 [node name="Label2" type="Label" parent="Upgrades" unique_id=602942414]
 layout_mode = 2
 text = "Press 2 for
 Speed Up"
 label_settings = SubResource("LabelSettings_ebmii")
+
+[node name="TextureButton2" type="TextureButton" parent="Upgrades/Label2" unique_id=1903547762]
+layout_mode = 0
+offset_left = -24.0
+offset_right = -24.0
+offset_bottom = 53.0
 
 [node name="Label3" type="Label" parent="Upgrades" unique_id=148570085]
 layout_mode = 2
@@ -47,7 +60,14 @@ text = "Press 3 for
 teleport dash"
 label_settings = SubResource("LabelSettings_tm43b")
 
+[node name="TextureButton3" type="TextureButton" parent="Upgrades/Label3" unique_id=1795011065]
+layout_mode = 0
+offset_left = 138.0
+offset_right = 138.0
+offset_bottom = 53.0
+
 [node name="Label" type="Label" parent="." unique_id=1535621354]
+visible = false
 offset_right = 279.0
 offset_bottom = 235.0
 label_settings = SubResource("LabelSettings_s7eya")

@@ -63,6 +63,7 @@ func game_timer_reduce(time_cost: float):
 
 func _on_rewind():
 	if is_rewinding: return
+	player.rewind.play()
 	is_rewinding = true
 	print("REWIND TIME")
 	player.hurtbox.get_node("CollisionShape2D").set_deferred("disabled", true)
@@ -70,8 +71,9 @@ func _on_rewind():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	var tween = get_tree().create_tween()
 	tween.tween_property(player, "global_position", 
-	start_area.spawn_pos.global_position, 1.0)
-	await get_tree().create_timer(1.1).timeout
+	start_area.spawn_pos.global_position, 1.5) # Ajustabil
+	await get_tree().create_timer(1.6).timeout
+	player.rewind.stop()
 	process_mode = Node.PROCESS_MODE_INHERIT
 	player.hurtbox.get_node("CollisionShape2D").set_deferred("disabled", false)
 	is_rewinding = false
