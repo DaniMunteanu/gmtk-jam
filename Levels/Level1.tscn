@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cx221ibwp33h5" path="res://icon.svg" id="2_fhqol"]
 [ext_resource type="PackedScene" uid="uid://b70pb8nr044ud" path="res://Levels/StartArea.tscn" id="4_nutv8"]
 [ext_resource type="PackedScene" uid="uid://cbl6hdllx5fj5" path="res://Levels/Obstacles/Mummy.tscn" id="6_05pb0"]
+[ext_resource type="PackedScene" uid="uid://bixjs3x33p0ba" path="res://UI/HourglassUI.tscn" id="8_5g41i"]
 [ext_resource type="Texture2D" uid="uid://djm0qmflsy3et" path="res://Sprites/Tilemap.png" id="8_xcayt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
@@ -117,7 +118,7 @@ sources/0 = SubResource("TileSetAtlasSource_5g41i")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wi6ju"]
 size = Vector2(5765, 578)
 
-[node name="Main" type="Node2D" unique_id=658485625 node_paths=PackedStringArray("player", "game_timer")]
+[node name="Level1" type="Node2D" unique_id=658485625 node_paths=PackedStringArray("player", "game_timer")]
 z_index = -1
 script = ExtResource("1_iotdp")
 player = NodePath("CharacterBody2D")
@@ -162,7 +163,7 @@ position = Vector2(839.5, -66.25)
 shape = SubResource("RectangleShape2D_njqwk")
 
 [node name="GameTimer" type="Timer" parent="." unique_id=254398723]
-wait_time = 1000.0
+wait_time = 180.0
 one_shot = true
 autostart = true
 
@@ -226,6 +227,15 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1252573583]
 position = Vector2(414.5, 205)
 shape = SubResource("RectangleShape2D_wi6ju")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1041834782]
+
+[node name="HourglassUI" parent="CanvasLayer" unique_id=2122711463 instance=ExtResource("8_5g41i")]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
 [connection signal="body_entered" from="EndArea" to="." method="_on_end_area_body_entered"]

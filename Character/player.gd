@@ -32,6 +32,8 @@ const FRICTION: float = 10.0
 var look_dir_x: int = 1
 var can_tp: bool = false
 
+func _ready() -> void:
+	pass
 
 func _physics_process(delta: float) -> void:
 	var x_input: float = Input.get_action_strength("right") - Input.get_action_strength("left")

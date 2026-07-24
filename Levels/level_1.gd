@@ -6,11 +6,15 @@ class_name Level
 #@onready var cam_player: AnimationPlayer = $Camera2D/AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
 @onready var start_area: Area2D = $StartArea
+@onready var hourglass_ui: HourglassUI = $CanvasLayer/HourglassUI
 
 var die_cost: float = 25.0
 var is_rewinding: bool = false
 
 func _ready() -> void:
+	hourglass_ui.sand_progress_up.max_value = game_timer.wait_time
+	hourglass_ui.sand_progress_down.max_value = game_timer.wait_time
+	
 	Sceneswitcher.rewind.connect(_on_rewind)
 	
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -32,6 +36,7 @@ func _ready() -> void:
 #for debugging time
 func _process(delta: float) -> void:
 	player.player_ui.label.text = str(game_timer.time_left)
+	hourglass_ui.update_sand(game_timer.time_left)
 	#here connection with the progress bar
 
 
