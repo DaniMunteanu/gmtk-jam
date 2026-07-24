@@ -14,22 +14,23 @@ script = ExtResource("1_otjfi")
 menu_music = ExtResource("7_obtq6")
 
 [node name="MenuScreen" type="TextureRect" parent="." unique_id=1812530362]
-offset_right = 1153.0
-offset_bottom = 647.0
+offset_right = 640.0
+offset_bottom = 360.0
 texture = ExtResource("2_obtq6")
+expand_mode = 1
 
 [node name="ButtonManager" type="Control" parent="MenuScreen" unique_id=1990474681]
 anchors_preset = 0
-offset_right = 1155.0
-offset_bottom = 644.0
+offset_right = 640.0
+offset_bottom = 360.0
 
 [node name="Start" type="Button" parent="MenuScreen/ButtonManager" unique_id=1885364604]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 865.0
-offset_top = 136.0
-offset_right = 1025.0
-offset_bottom = 188.0
+offset_left = 435.0
+offset_top = 48.0
+offset_right = 595.0
+offset_bottom = 100.0
 script = ExtResource("3_t4ff4")
 
 [node name="TextureRect" type="TextureRect" parent="MenuScreen/ButtonManager/Start" unique_id=1122754066]
@@ -43,10 +44,10 @@ expand_mode = 1
 [node name="Options" type="Button" parent="MenuScreen/ButtonManager" unique_id=100740802]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 862.0
-offset_top = 234.0
-offset_right = 1033.0
-offset_bottom = 288.0
+offset_left = 432.0
+offset_top = 146.0
+offset_right = 603.0
+offset_bottom = 200.0
 script = ExtResource("3_t4ff4")
 
 [node name="TextureRect" type="TextureRect" parent="MenuScreen/ButtonManager/Options" unique_id=1154125202]
@@ -61,10 +62,10 @@ expand_mode = 1
 [node name="Quit" type="Button" parent="MenuScreen/ButtonManager" unique_id=1292268920]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 863.0
-offset_top = 336.0
-offset_right = 1035.0
-offset_bottom = 389.0
+offset_left = 433.0
+offset_top = 248.0
+offset_right = 605.0
+offset_bottom = 301.0
 script = ExtResource("3_t4ff4")
 
 [node name="TextureRect" type="TextureRect" parent="MenuScreen/ButtonManager/Quit" unique_id=363911309]
@@ -84,10 +85,10 @@ offset_bottom = 40.0
 
 [node name="Level1" type="Button" parent="MenuScreen/LevelManager" unique_id=1177718619]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 179.0
-offset_right = 301.0
-offset_bottom = 257.0
+offset_left = 30.0
+offset_top = 132.0
+offset_right = 171.0
+offset_bottom = 210.0
 text = "Level 1"
 
 [node name="TextureRect" type="TextureRect" parent="MenuScreen/LevelManager/Level1" unique_id=1336901996]
@@ -97,21 +98,22 @@ offset_bottom = 74.0
 
 [node name="Level2" type="Button" parent="MenuScreen/LevelManager" unique_id=2117028171]
 layout_mode = 0
-offset_left = 523.0
-offset_top = 170.0
-offset_right = 672.0
-offset_bottom = 253.0
+offset_left = 232.0
+offset_top = 130.0
+offset_right = 381.0
+offset_bottom = 213.0
 text = "Level 2"
 
 [node name="Level3" type="Button" parent="MenuScreen/LevelManager" unique_id=798040556]
 layout_mode = 0
-offset_left = 855.0
-offset_top = 177.0
-offset_right = 1011.0
-offset_bottom = 254.0
+offset_left = 435.0
+offset_top = 132.0
+offset_right = 591.0
+offset_bottom = 209.0
 text = "Level 3"
 
 [node name="OptionsPanel" parent="." unique_id=355889237 instance=ExtResource("8_t4ff4")]
+visible = false
 
 [connection signal="pressed" from="MenuScreen/ButtonManager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MenuScreen/ButtonManager/Options" to="." method="_on_options_pressed"]

@@ -78,17 +78,28 @@ anchor_left = 0.404
 anchor_top = -0.48800004
 anchor_right = 0.568
 anchor_bottom = 0.5
-offset_left = 88.72797
-offset_top = 51.240005
-offset_right = 91.776
-offset_bottom = 0.5
+offset_left = 85.72797
+offset_top = 158.24
+offset_right = 88.776
+offset_bottom = 107.5
 texture = ExtResource("2_ibhce")
 expand_mode = 1
 
-[node name="NewScolOptions" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer/OptionsLabel" unique_id=279091383]
-position = Vector2(708.49994, 227.00002)
-scale = Vector2(0.7836118, 0.9296028)
+[node name="OptionsBackground" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/OptionsLabel" unique_id=12194780]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.54700005
+anchor_top = 1.9900001
+anchor_right = 0.54700005
+anchor_bottom = 1.9900001
+offset_left = -248.59607
+offset_top = -142.95001
+offset_right = 248.40393
+offset_bottom = 143.04999
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_ysf2e")
+expand_mode = 1
 
 [node name="MasterLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=735976144]
 layout_mode = 0
@@ -209,10 +220,10 @@ anchor_left = 0.726
 anchor_top = 0.74
 anchor_right = 0.726
 anchor_bottom = 0.74
-offset_left = 0.5180054
-offset_top = 0.19998169
-offset_right = 88.518005
-offset_bottom = 47.19998
+offset_left = -199.482
+offset_top = -161.80002
+offset_right = -111.481995
+offset_bottom = -114.80002
 size_flags_horizontal = 12
 text = "
 "
