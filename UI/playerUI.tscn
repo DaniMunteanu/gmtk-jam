@@ -14,9 +14,11 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_s7eya"]
 font_size = 48
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1722666215 node_paths=PackedStringArray("time_hourglass")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1722666215 node_paths=PackedStringArray("time_hourglass", "label_arr", "upgrade_arr")]
 script = ExtResource("1_225y7")
 time_hourglass = NodePath("TimeHourglass")
+label_arr = [NodePath("Upgrades/Label"), NodePath("Upgrades/Label2"), NodePath("Upgrades/Label3")]
+upgrade_arr = [null, null, null]
 
 [node name="TimeHourglass" type="TextureProgressBar" parent="." unique_id=174971820]
 offset_right = 178.0
