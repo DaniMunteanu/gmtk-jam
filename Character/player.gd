@@ -112,3 +112,7 @@ func _input(_event: InputEvent) -> void:
 				return
 			global_position += %LeftRaycast.target_position
 	
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	process_mode = Node.PROCESS_MODE_DISABLED
+	get_node("CollisionShape2D").queue_free()
+	get_tree().call_deferred("reload_current_scene")
