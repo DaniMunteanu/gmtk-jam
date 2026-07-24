@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 @onready var label: Label = $Label
-@export var time_hourglass: TextureProgressBar
 
 @export_group("Upgrades")
 @export var label_arr: Array[Label]
