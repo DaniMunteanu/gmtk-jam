@@ -60,11 +60,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gt56a"]
-radius = 16.0
+radius = 11.0
 height = 66.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ragau"]
-radius = 16.0
+radius = 15.0
 height = 66.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1123172477 node_paths=PackedStringArray("player_ui", "upgrade_arr", "sprite", "CoyoteTimer", "JumpBufferTimer")]
@@ -97,6 +97,7 @@ one_shot = true
 [node name="UpgradeOne" parent="." unique_id=858234164 node_paths=PackedStringArray("player") instance=ExtResource("3_1ju47")]
 script = ExtResource("4_ynroq")
 player = NodePath("..")
+self_no = 1
 
 [node name="UpgradeTwo" type="Node" parent="." unique_id=1004038602 node_paths=PackedStringArray("player", "cooldown_timer", "active_timer")]
 script = ExtResource("5_v6d5b")
@@ -106,6 +107,7 @@ player = NodePath("..")
 cooldown_timer = NodePath("CooldownTimer")
 active_timer = NodePath("ActiveTimer")
 time_price = 10.0
+self_no = 2
 
 [node name="CooldownTimer" type="Timer" parent="UpgradeTwo" unique_id=58477692]
 wait_time = 5.0
@@ -121,6 +123,7 @@ player = NodePath("..")
 cooldown_timer = NodePath("CooldownTimer")
 active_timer = NodePath("ActiveTimer")
 time_price = 50.0
+self_no = 3
 
 [node name="CooldownTimer" type="Timer" parent="UpgradeThree" unique_id=1720785599]
 wait_time = 2.0
@@ -130,6 +133,8 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
+[node name="CanvasLayer" parent="." unique_id=1722666215 instance=ExtResource("7_5ydrh")]
+
 [node name="RightRaycast" type="RayCast2D" parent="." unique_id=1092283067]
 unique_name_in_owner = true
 target_position = Vector2(250, 0)
@@ -138,14 +143,13 @@ target_position = Vector2(250, 0)
 unique_name_in_owner = true
 target_position = Vector2(-250, 0)
 
-[node name="CanvasLayer" parent="." unique_id=1722666215 instance=ExtResource("7_5ydrh")]
-
 [node name="Hurtbox" type="Area2D" parent="." unique_id=77641414]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=611556268]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_ragau")
 
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

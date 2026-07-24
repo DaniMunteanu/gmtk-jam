@@ -3,6 +3,7 @@ extends Upgrade
 @export var speed_upgrade: float
 @export var accel_upgrade: float
 
+
 func power_up():
 	print("UPGRADE 2 ACTIVE!")
 	player.max_speed += speed_upgrade

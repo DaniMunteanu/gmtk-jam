@@ -5,14 +5,19 @@ class_name Level
 @export var game_timer: Timer
 #@onready var cam_player: AnimationPlayer = $Camera2D/AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
+@onready var start_area: Area2D = $StartArea
 
+var die_cost: float = 25.0
+var is_rewinding: bool = false
 
 func _ready() -> void:
+	Sceneswitcher.rewind.connect(_on_rewind)
+	
 	process_mode = Node.PROCESS_MODE_DISABLED
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(0.1).timeout #2.0
 	var tween = get_tree().create_tween()
 	tween.tween_property(camera, "position", player.camera.global_position, 6.0 )
-	await get_tree().create_timer(6.0).timeout
+	await get_tree().create_timer(0.1).timeout #6.0
 	#cam_player.play("camera_pan")
 	#await cam_player.animation_finished
 	#cam_player.queue_free()
@@ -27,10 +32,12 @@ func _ready() -> void:
 #for debugging time
 func _process(delta: float) -> void:
 	player.player_ui.label.text = str(game_timer.time_left)
+	#here connection with the progress bar
 
 
 func _on_game_timer_timeout() -> void:
 	print("ai pierdut!")
+	#aici vine game over screen!
 	get_tree().quit()
 
 
@@ -44,3 +51,18 @@ func game_timer_reduce(time_cost: float):
 	print("time you had before the upgrade: ", game_timer.time_left)
 	game_timer.start(game_timer.time_left - time_cost)
 	print("time you have after the upgrade: ", game_timer.time_left)
+
+func _on_rewind():
+	if is_rewinding: return
+	is_rewinding = true
+	print("REWIND TIME")
+	player.hurtbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+	game_timer_reduce(die_cost)
+	process_mode = Node.PROCESS_MODE_DISABLED
+	var tween = get_tree().create_tween()
+	tween.tween_property(player, "global_position", 
+	start_area.spawn_pos.global_position, 1.0)
+	await get_tree().create_timer(1.1).timeout
+	process_mode = Node.PROCESS_MODE_INHERIT
+	player.hurtbox.get_node("CollisionShape2D").set_deferred("disabled", false)
+	is_rewinding = false
