@@ -54,7 +54,11 @@ func _on_end_area_body_entered(body: Node2D) -> void:
 func game_timer_reduce(time_cost: float):
 	print("the cost is: ", time_cost)
 	print("time you had before the upgrade: ", game_timer.time_left)
-	game_timer.start(game_timer.time_left - time_cost)
+	if game_timer.time_left - time_cost > 0:
+		game_timer.start(game_timer.time_left - time_cost)
+	else:
+		game_timer.stop()
+		_on_game_timer_timeout()
 	print("time you have after the upgrade: ", game_timer.time_left)
 
 func _on_rewind():
