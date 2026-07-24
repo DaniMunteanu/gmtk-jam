@@ -60,11 +60,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gt56a"]
-radius = 16.0
+radius = 11.0
 height = 66.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ragau"]
-radius = 16.0
+radius = 15.0
 height = 66.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1123172477 node_paths=PackedStringArray("player_ui", "upgrade_arr", "sprite", "CoyoteTimer", "JumpBufferTimer")]
@@ -141,11 +141,12 @@ target_position = Vector2(-250, 0)
 [node name="CanvasLayer" parent="." unique_id=1722666215 instance=ExtResource("7_5ydrh")]
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=77641414]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=611556268]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_ragau")
 
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

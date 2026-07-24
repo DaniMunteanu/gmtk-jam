@@ -4,6 +4,8 @@ class_name Player
 
 var game_timer: Timer
 @onready var camera: Camera2D = $Camera2D
+@onready var hurtbox: Area2D = $Hurtbox
+
 @export var player_ui: CanvasLayer
 @export_category("Upgrades")
 @export var upgrade_arr: Array[Upgrade]
@@ -113,6 +115,6 @@ func _input(_event: InputEvent) -> void:
 			global_position += %LeftRaycast.target_position
 	
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	process_mode = Node.PROCESS_MODE_DISABLED
-	get_node("CollisionShape2D").queue_free()
-	get_tree().call_deferred("reload_current_scene")
+	Sceneswitcher.rewind.emit()
+	#get_node("CollisionShape2D").queue_free()
+	#get_tree().call_deferred("reload_current_scene")

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed: float
 var dir: int = 1 # so it starts moving right by default
 var gravity: float = 12.0
+var can_hurt: bool = true
 
 @onready var right_cast: RayCast2D = $RightCast
 @onready var left_cast: RayCast2D = $LeftCast
@@ -32,11 +33,17 @@ func _physics_process(delta: float) -> void:
 	
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+#func _on_area_2d_body_entered(body: Node2D) -> void:
 	#dramatic death
-	if body is Player:
-		process_mode = Node.PROCESS_MODE_DISABLED
-		body.get_node("CollisionShape2D").queue_free()
+	#if body is Player:
+		#Sceneswitcher.rewind.emit()
+		#process_mode = Node.PROCESS_MODE_DISABLED
+		#body.get_node("CollisionShape2D").queue_free()
+		#get_tree().call_deferred("reload_current_scene")
 		#Engine.time_scale = 0.5
 		#play on their knees anim
-		get_tree().call_deferred("reload_current_scene")
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.name == "Hurtbox":
+		Sceneswitcher.rewind.emit()

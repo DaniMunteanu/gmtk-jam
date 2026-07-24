@@ -51,9 +51,11 @@ frame_progress = 0.5219552
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=425527428]
 shape = SubResource("CapsuleShape2D_iir43")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=66917692]
+[node name="Hitbox" type="Area2D" parent="." unique_id=66917692]
+collision_layer = 9
+collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1417499056]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1417499056]
 position = Vector2(-2.5, 1.5)
 shape = SubResource("CapsuleShape2D_rk8it")
 
@@ -65,4 +67,4 @@ collision_mask = 4
 target_position = Vector2(-47, 0)
 collision_mask = 4
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
