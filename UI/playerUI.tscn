@@ -2,11 +2,21 @@
 
 [ext_resource type="Script" uid="uid://b3glp36buhcvu" path="res://UI/player_ui.gd" id="1_225y7"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_225y7"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_ebmii"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_tm43b"]
+font_size = 24
+
 [sub_resource type="LabelSettings" id="LabelSettings_s7eya"]
 font_size = 48
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1722666215]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1722666215 node_paths=PackedStringArray("time_hourglass")]
 script = ExtResource("1_225y7")
+time_hourglass = NodePath("TimeHourglass")
 
 [node name="TimeHourglass" type="TextureProgressBar" parent="." unique_id=174971820]
 offset_right = 178.0
@@ -17,10 +27,29 @@ fill_mode = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
+offset_left = -121.0
+offset_right = 121.0
 offset_bottom = 40.0
 grow_horizontal = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="Upgrades" unique_id=750869090]
+layout_mode = 2
+text = "     Press 1
+for double jump"
+label_settings = SubResource("LabelSettings_225y7")
+
+[node name="Label2" type="Label" parent="Upgrades" unique_id=602942414]
+layout_mode = 2
+text = "Press 2 for
+Speed Up"
+label_settings = SubResource("LabelSettings_ebmii")
+
+[node name="Label3" type="Label" parent="Upgrades" unique_id=148570085]
+layout_mode = 2
+text = "Press 3 for
+teleport dash"
+label_settings = SubResource("LabelSettings_tm43b")
 
 [node name="Label" type="Label" parent="." unique_id=1535621354]
 offset_right = 279.0
