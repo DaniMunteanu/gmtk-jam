@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://1umc02ggnqvi"]
+
+[ext_resource type="Texture2D" uid="uid://boh6wmb5jygsd" path="res://Sprites/HourglassUI/SandProgressUp.png" id="1_lpvh1"]
+[ext_resource type="Shader" uid="uid://caxbp01140eyl" path="res://explosion.gdshader" id="2_7ja04"]
+[ext_resource type="Texture2D" uid="uid://cbmvtrd3wp5xu" path="res://Sprites/Player/PlayerMidAir.png" id="3_qf8db"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13qdw"]
+shader = ExtResource("2_7ja04")
+shader_parameter/spread = 180.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 100.0
+shader_parameter/initial_linear_velocity_max = 100.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/emission_box_extents = Vector3(100, 100, 0)
+shader_parameter/sprite = ExtResource("3_qf8db")
+
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=1233998539]
+amount = 2048
+texture = ExtResource("1_lpvh1")
+explosiveness = 1.0
+process_material = SubResource("ShaderMaterial_13qdw")

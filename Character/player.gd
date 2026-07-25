@@ -10,6 +10,7 @@ var game_timer: Timer
 @onready var power_up: AudioStreamPlayer = $Audio/power_up
 @onready var walk: AudioStreamPlayer = $Audio/walk
 @onready var dash: AudioStreamPlayer = $Audio/dash
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 
 

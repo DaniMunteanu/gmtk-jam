@@ -7,6 +7,7 @@ class_name Level
 @onready var camera: Camera2D = $Camera2D
 @onready var start_area: Area2D = $StartArea
 @onready var hourglass_ui: HourglassUI = $CanvasLayer/HourglassUI
+@onready var rewind_texture: TextureRect = $CanvasLayer/TextureRect
 
 var die_cost: float = 25.0
 var is_rewinding: bool = false
@@ -15,6 +16,7 @@ func _ready() -> void:
 	hourglass_ui.sand_progress_up.max_value = game_timer.wait_time
 	hourglass_ui.sand_progress_down.max_value = game_timer.wait_time
 	
+	rewind_texture.visible = false
 	Sceneswitcher.rewind.connect(_on_rewind)
 	
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -63,11 +65,14 @@ func game_timer_reduce(time_cost: float):
 
 func _on_rewind():
 	if is_rewinding: return
+	rewind_texture.visible = true
+	player.anim_player.play("hit")
 	player.rewind.play()
 	is_rewinding = true
 	print("REWIND TIME")
 	player.hurtbox.get_node("CollisionShape2D").set_deferred("disabled", true)
 	game_timer_reduce(die_cost)
+	await get_tree().create_timer(0.1).timeout
 	process_mode = Node.PROCESS_MODE_DISABLED
 	var tween = get_tree().create_tween()
 	tween.tween_property(player, "global_position", 
@@ -77,3 +82,4 @@ func _on_rewind():
 	process_mode = Node.PROCESS_MODE_INHERIT
 	player.hurtbox.get_node("CollisionShape2D").set_deferred("disabled", false)
 	is_rewinding = false
+	rewind_texture.visible = false

@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	for timer in active_timer_arr:
 		if !timer.is_stopped():
-			print("this timer: ", timer, "is going!")
+			#print("this timer: ", timer, "is going!")
 			hourglass_arr[active_timer_arr.find(timer)].update_sand(timer.time_left)
 
 func hide_upgrade_butt(upgrade_no: int, active_timer: Timer):

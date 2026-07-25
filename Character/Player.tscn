@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dp1s3j2iy8n5g" path="res://Character/player.gd" id="1_oo13o"]
 [ext_resource type="Texture2D" uid="uid://b11at33lrjvoh" path="res://Sprites/Player/PlayerIdle.png" id="2_o1y46"]
+[ext_resource type="Shader" uid="uid://cqgojr7eqweu" path="res://Shaders/PlayerShader.gdshader" id="2_p4yhq"]
 [ext_resource type="PackedScene" uid="uid://x0uxjqbf4m8v" path="res://Character/upgrade.tscn" id="3_1ju47"]
 [ext_resource type="Texture2D" uid="uid://cbmvtrd3wp5xu" path="res://Sprites/Player/PlayerMidAir.png" id="3_qolio"]
 [ext_resource type="Texture2D" uid="uid://chjkj1gfvkuyg" path="res://Sprites/Player/PlayerWalk.png" id="4_y83ax"]
@@ -15,6 +16,11 @@
 [ext_resource type="AudioStream" uid="uid://batc8t7a266a3" path="res://Audio/power_activate.wav" id="13_fo5vu"]
 [ext_resource type="AudioStream" uid="uid://cikw73k5asp2m" path="res://Audio/stone_pixelated_footstep.wav" id="14_p4yhq"]
 [ext_resource type="AudioStream" uid="uid://bja10gpm03ngb" path="res://Audio/hurt.wav" id="15_fo5vu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0h0a"]
+shader = ExtResource("2_p4yhq")
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d703b"]
 atlas = ExtResource("2_o1y46")
@@ -73,6 +79,56 @@ height = 66.0
 radius = 15.0
 height = 66.0
 
+[sub_resource type="Animation" id="Animation_p4yhq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_iir43"]
+resource_name = "hit"
+length = 0.19999999999999998
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/hit_flash_on")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rk8it"]
+_data = {
+&"RESET": SubResource("Animation_p4yhq"),
+&"hit": SubResource("Animation_iir43")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1123172477 node_paths=PackedStringArray("player_ui", "upgrade_arr", "sprite", "CoyoteTimer", "JumpBufferTimer")]
 z_index = 10
 script = ExtResource("1_oo13o")
@@ -84,6 +140,7 @@ JumpBufferTimer = NodePath("JumpBufferTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1093916759]
 texture_filter = 1
+material = SubResource("ShaderMaterial_w0h0a")
 sprite_frames = SubResource("SpriteFrames_13qdw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=636502317]
@@ -192,6 +249,9 @@ volume_db = -10.41
 
 [node name="hurt" type="AudioStreamPlayer" parent="Audio" unique_id=1011763043]
 stream = ExtResource("15_fo5vu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=775802297]
+libraries/ = SubResource("AnimationLibrary_rk8it")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
