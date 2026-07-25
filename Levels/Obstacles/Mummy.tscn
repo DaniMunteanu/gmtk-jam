@@ -30,8 +30,8 @@ radius = 37.0
 height = 118.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rk8it"]
-radius = 52.5
-height = 135.0
+radius = 43.5
+height = 127.0
 
 [node name="Mummy" type="CharacterBody2D" unique_id=1847278642 node_paths=PackedStringArray("sprite")]
 collision_layer = 5
