@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://cm1wc6a1jk4u8"]
+
+[ext_resource type="Texture2D" uid="uid://cg30a7de7ax7m" path="res://Sprites/HourglassFinish/TransparentGlass.png" id="1_43yx1"]
+[ext_resource type="Script" uid="uid://n3l7t5ktntf1" path="res://Levels/hourglass_finish.gd" id="1_irj8m"]
+[ext_resource type="Texture2D" uid="uid://b4kbsqh51y0t6" path="res://Sprites/HourglassFinish/HourglassFrame.png" id="2_em4e7"]
+[ext_resource type="Texture2D" uid="uid://c785xte6wbtet" path="res://Sprites/HourglassFinish/SandProgressUp.png" id="3_irj8m"]
+[ext_resource type="Texture2D" uid="uid://dl3ssr804p6am" path="res://Sprites/HourglassFinish/SandProgressDown.png" id="4_jwe2p"]
+[ext_resource type="Texture2D" uid="uid://dgll5thhpve5c" path="res://Sprites/HourglassFinish/SandFalling.png" id="5_45po0"]
+[ext_resource type="Texture2D" uid="uid://bnw8fiy2otnwb" path="res://Sprites/HourglassFinish/HourglassCat.png" id="6_em4e7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n708l"]
+atlas = ExtResource("5_45po0")
+region = Rect2(0, 0, 160, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2shvo"]
+atlas = ExtResource("5_45po0")
+region = Rect2(160, 0, 160, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ragau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n708l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2shvo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HourglassFinish" type="Node2D" unique_id=310234343]
+texture_filter = 1
+script = ExtResource("1_irj8m")
+
+[node name="Glass" type="Sprite2D" parent="." unique_id=1277960766]
+modulate = Color(1, 1, 1, 0.2)
+z_index = 4
+texture = ExtResource("1_43yx1")
+
+[node name="Border" type="Sprite2D" parent="." unique_id=750994062]
+texture = ExtResource("2_em4e7")
+
+[node name="SandProgressUp" type="TextureProgressBar" parent="." unique_id=1294787100]
+z_index = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -140.0
+offset_right = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+fill_mode = 3
+texture_progress = ExtResource("3_irj8m")
+
+[node name="SandProgressDown" type="TextureProgressBar" parent="." unique_id=677263455]
+z_index = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_right = 80.0
+offset_bottom = 140.0
+grow_horizontal = 2
+fill_mode = 3
+texture_progress = ExtResource("4_jwe2p")
+
+[node name="SandFalling" type="AnimatedSprite2D" parent="." unique_id=104396543]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_ragau")
+frame_progress = 0.5436931
+
+[node name="Cat" type="Sprite2D" parent="." unique_id=1748587474]
+z_index = 1
+texture = ExtResource("6_em4e7")
+hframes = 3
+vframes = 3
+frame = 8

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b5ek03hhbwkoj" path="res://Levels/level_1.gd" id="1_v44il"]
 [ext_resource type="Texture2D" uid="uid://djm0qmflsy3et" path="res://Sprites/Tilemap.png" id="2_c8o6p"]
+[ext_resource type="PackedScene" uid="uid://cm1wc6a1jk4u8" path="res://Levels/HourglassFinish.tscn" id="2_rg61p"]
 [ext_resource type="PackedScene" uid="uid://bfmnrnrcy7ela" path="res://Character/Player.tscn" id="3_rg61p"]
 [ext_resource type="PackedScene" uid="uid://bixjs3x33p0ba" path="res://UI/HourglassUI.tscn" id="4_s42oh"]
 [ext_resource type="Shader" uid="uid://be6o1weacxoti" path="res://Shaders/rewind.gdshader" id="5_jgx74"]
@@ -83,6 +84,9 @@ size = Vector2(5765, 578)
 script = ExtResource("1_v44il")
 player = NodePath("CharacterBody2D")
 game_timer = NodePath("GameTimer")
+
+[node name="HourglassFinish" parent="." unique_id=310234343 instance=ExtResource("2_rg61p")]
+position = Vector2(1872, -1376)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1916265787]
 process_mode = 2
@@ -202,8 +206,30 @@ position = Vector2(1, 0)
 [node name="EndMarker" parent="Platforms/MovingPlatform2" index="3" unique_id=1221469228]
 position = Vector2(676, 0)
 
+[node name="MovingPlatform3" parent="Platforms" unique_id=2094996778 instance=ExtResource("8_saryc")]
+position = Vector2(730, -1033)
+duration = 3.0
+
+[node name="StartMarker" parent="Platforms/MovingPlatform3" index="2" unique_id=87539437]
+position = Vector2(1, 0)
+
+[node name="EndMarker" parent="Platforms/MovingPlatform3" index="3" unique_id=1221469228]
+position = Vector2(404, 0)
+
+[node name="MovingPlatform4" parent="Platforms" unique_id=2033467806 instance=ExtResource("8_saryc")]
+position = Vector2(1546, -1099)
+duration = 3.0
+
+[node name="StartMarker" parent="Platforms/MovingPlatform4" index="2" unique_id=87539437]
+position = Vector2(1, 0)
+
+[node name="EndMarker" parent="Platforms/MovingPlatform4" index="3" unique_id=1221469228]
+position = Vector2(-293, 0)
+
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
 [connection signal="body_entered" from="EndArea" to="." method="_on_end_area_body_entered"]
 
 [editable path="Platforms/MovingPlatform"]
 [editable path="Platforms/MovingPlatform2"]
+[editable path="Platforms/MovingPlatform3"]
+[editable path="Platforms/MovingPlatform4"]

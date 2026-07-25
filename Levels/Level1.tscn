@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b70pb8nr044ud" path="res://Levels/StartArea.tscn" id="4_nutv8"]
 [ext_resource type="PackedScene" uid="uid://cbl6hdllx5fj5" path="res://Levels/Obstacles/Mummy.tscn" id="6_05pb0"]
 [ext_resource type="PackedScene" uid="uid://bixjs3x33p0ba" path="res://UI/HourglassUI.tscn" id="8_5g41i"]
+[ext_resource type="PackedScene" uid="uid://cm1wc6a1jk4u8" path="res://Levels/HourglassFinish.tscn" id="8_p5226"]
 [ext_resource type="Texture2D" uid="uid://djm0qmflsy3et" path="res://Sprites/Tilemap.png" id="8_xcayt"]
 [ext_resource type="Shader" uid="uid://be6o1weacxoti" path="res://Shaders/rewind.gdshader" id="9_5g41i"]
 [ext_resource type="Texture2D" uid="uid://lnaw6o18lve5" path="res://Shaders/white.png" id="10_7fl83"]
@@ -238,6 +239,8 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1252573583]
 position = Vector2(414.5, 205)
 shape = SubResource("RectangleShape2D_wi6ju")
+
+[node name="HourglassFinish" parent="." unique_id=310234343 instance=ExtResource("8_p5226")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1041834782]
 

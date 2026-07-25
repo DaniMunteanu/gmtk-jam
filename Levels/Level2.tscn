@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://be6o1weacxoti" path="res://Shaders/rewind.gdshader" id="5_m3ha0"]
 [ext_resource type="Texture2D" uid="uid://lnaw6o18lve5" path="res://Shaders/white.png" id="6_vd23k"]
 [ext_resource type="PackedScene" uid="uid://dxrq803gwyfos" path="res://Levels/platform.tscn" id="6_w0h0a"]
+[ext_resource type="PackedScene" uid="uid://cm1wc6a1jk4u8" path="res://Levels/HourglassFinish.tscn" id="9_vd23k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jglcl"]
 texture = ExtResource("1_wcc2u")
@@ -146,5 +147,8 @@ position = Vector2(-126, 103)
 
 [node name="EndMarker" parent="MovingPlatform2" index="3" unique_id=1221469228]
 position = Vector2(0, -80)
+
+[node name="HourglassFinish" parent="." unique_id=310234343 instance=ExtResource("9_vd23k")]
+position = Vector2(-126, 103)
 
 [editable path="MovingPlatform2"]
