@@ -13,6 +13,8 @@ class_name HourglassFinish
 @onready var player_breaking_left: AnimatedSprite2D = $PlayerBreakingLeft
 @onready var player_breaking_right: AnimatedSprite2D = $PlayerBreakingRight
 
+signal level_won
+
 func _ready() -> void:
 	sand_falling.play()
 
@@ -23,6 +25,8 @@ func update_sand(time_left: float):
 
 func _on_victory_zone_left_body_entered(body: Node2D) -> void:
 	if body is Player:
+		level_won.emit()
+		
 		camera.make_current()
 		camera.global_position = body.global_position
 		
@@ -45,6 +49,8 @@ func _on_victory_zone_left_body_entered(body: Node2D) -> void:
 
 func _on_victory_zone_right_body_entered(body: Node2D) -> void:
 	if body is Player:
+		level_won.emit()
+		
 		camera.make_current()
 		camera.global_position = body.global_position
 		
