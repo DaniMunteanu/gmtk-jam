@@ -15,6 +15,8 @@ class_name Level
 var die_cost: float = 25.0
 var is_rewinding: bool = false
 
+var level_completed: bool = false
+
 func _ready() -> void:
 	set_cam_limits()
 	hourglass_ui.sand_progress_up.max_value = game_timer.wait_time
@@ -22,6 +24,8 @@ func _ready() -> void:
 	
 	hourglass_finish.sand_progress_up.max_value = game_timer.wait_time
 	hourglass_finish.sand_progress_down.max_value = game_timer.wait_time
+	
+	hourglass_finish.level_won.connect(_on_level_won)
 	
 	hourglass_ui.update_sand(game_timer.time_left)
 	hourglass_finish.update_sand(game_timer.time_left)
@@ -49,11 +53,15 @@ func _ready() -> void:
 
 #for debugging time
 func _process(delta: float) -> void:
-	player.player_ui.label.text = str(game_timer.time_left)
-	hourglass_ui.update_sand(game_timer.time_left)
-	hourglass_finish.update_sand(game_timer.time_left)
-	#here connection with the progress bar
+	if level_completed == false:
+		player.player_ui.label.text = str(game_timer.time_left)
+		hourglass_ui.update_sand(game_timer.time_left)
+		hourglass_finish.update_sand(game_timer.time_left)
+		#here connection with the progress bar
 
+func _on_level_won():
+	level_completed = true
+	game_timer.stop()
 
 func _on_game_timer_timeout() -> void:
 	print("ai pierdut!")

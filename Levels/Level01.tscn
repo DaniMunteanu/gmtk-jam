@@ -85,7 +85,7 @@ game_timer = NodePath("GameTimer")
 [node name="HourglassFinish" parent="." unique_id=310234343 node_paths=PackedStringArray("camera") instance=ExtResource("2_rg61p")]
 position = Vector2(1872, -1376)
 camera = NodePath("../Camera2D")
-next_level_path = "res://Levels/level01.tscn"
+next_level_path = "res://Levels/level02.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1916265787]
 process_mode = 2
