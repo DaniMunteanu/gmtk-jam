@@ -4,6 +4,7 @@ class_name Level
 @export var player: Player
 @export var game_timer: Timer
 @export var win_path: String
+@export var tilemap: TileMapLayer
 #@onready var cam_player: AnimationPlayer = $Camera2D/AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
 @onready var start_area: Area2D = $StartArea
@@ -14,6 +15,7 @@ var die_cost: float = 25.0
 var is_rewinding: bool = false
 
 func _ready() -> void:
+	set_cam_limits()
 	hourglass_ui.sand_progress_up.max_value = game_timer.wait_time
 	hourglass_ui.sand_progress_down.max_value = game_timer.wait_time
 	
@@ -21,10 +23,10 @@ func _ready() -> void:
 	Sceneswitcher.rewind.connect(_on_rewind)
 	
 	process_mode = Node.PROCESS_MODE_DISABLED
-	await get_tree().create_timer(0.1).timeout #2.0
+	await get_tree().create_timer(1).timeout #2.0
 	var tween = get_tree().create_tween()
 	tween.tween_property(camera, "position", player.camera.global_position, 6.0 )
-	await get_tree().create_timer(0.1).timeout #6.0
+	await get_tree().create_timer(6).timeout #6.0
 	#cam_player.play("camera_pan")
 	#await cam_player.animation_finished
 	#cam_player.queue_free()
@@ -84,3 +86,18 @@ func _on_rewind():
 	player.hurtbox.get_node("CollisionShape2D").set_deferred("disabled", false)
 	is_rewinding = false
 	rewind_texture.visible = false
+
+
+func set_cam_limits():
+	if !tilemap or !player:
+		return
+	var map_rect: Rect2i = tilemap.get_used_rect()
+	var tile_size: Vector2i = tilemap.tile_set.tile_size
+	
+	var world_start: Vector2i = map_rect.position * tile_size
+	var world_end: Vector2i = map_rect.end * tile_size
+	
+	player.camera.limit_left = world_start.x
+	player.camera.limit_top = world_start.y
+	player.camera.limit_right = world_end.x
+	player.camera.limit_bottom = world_end.y
