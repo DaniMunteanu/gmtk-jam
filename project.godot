@@ -24,6 +24,7 @@ AudioManager="*uid://bh1hce11u7dpl"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=4
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
