@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://c8qqhfsn3ov55"]
 
 [ext_resource type="Script" uid="uid://b3glp36buhcvu" path="res://UI/player_ui.gd" id="1_225y7"]
+[ext_resource type="Texture2D" uid="uid://hyarjjgh0mmt" path="res://Sprites/Button.png" id="2_ebmii"]
+[ext_resource type="Texture2D" uid="uid://bjq8s8rej3rx" path="res://Sprites/HourglassAbilities/HourglassBorder.png" id="3_p41k2"]
+[ext_resource type="Texture2D" uid="uid://diaiucax77scx" path="res://Sprites/HourglassAbilities/HourglassProgressUp.png" id="4_puuxp"]
+[ext_resource type="Texture2D" uid="uid://d3qjavy7iqc45" path="res://Sprites/HourglassAbilities/HourglassProgressDown.png" id="5_3xooj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_225y7"]
 font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_edqev"]
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_ebmii"]
 font_size = 24
@@ -16,7 +23,7 @@ font_size = 48
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1722666215 node_paths=PackedStringArray("label_arr", "btn_arr", "upgrade_arr")]
 script = ExtResource("1_225y7")
-label_arr = [NodePath("Upgrades/Label"), NodePath("Upgrades/Label2"), NodePath("Upgrades/Label3")]
+label_arr = [NodePath("Upgrades/TextureButton/Label"), NodePath("Upgrades/TextureButton2/Label2"), NodePath("Upgrades/TextureButton3/Label3")]
 btn_arr = [null, null, null]
 upgrade_arr = [null, null, null]
 
@@ -24,47 +31,133 @@ upgrade_arr = [null, null, null]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -121.0
-offset_right = 121.0
-offset_bottom = 40.0
+offset_left = -250.0
+offset_top = 2.0
+offset_right = 158.0
+offset_bottom = 62.0
 grow_horizontal = 2
 theme_override_constants/separation = 24
 
-[node name="Label" type="Label" parent="Upgrades" unique_id=750869090]
+[node name="TextureButton" type="TextureButton" parent="Upgrades" unique_id=30013222]
+texture_filter = 1
 layout_mode = 2
-text = "     Press 1
-for double jump"
+texture_normal = ExtResource("2_ebmii")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Upgrades/TextureButton" unique_id=750869090]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press 1 for 
+double jump"
 label_settings = SubResource("LabelSettings_225y7")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="Upgrades/Label" unique_id=30013222]
+[node name="TextureRect" type="TextureRect" parent="Upgrades/TextureButton" unique_id=1233638760]
 layout_mode = 0
-offset_left = 164.0
-offset_right = 164.0
-offset_bottom = 53.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 50.0
+offset_bottom = 54.0
+texture = ExtResource("3_p41k2")
+stretch_mode = 5
 
-[node name="Label2" type="Label" parent="Upgrades" unique_id=602942414]
+[node name="TextureProgressBarUp" type="TextureProgressBar" parent="Upgrades/TextureButton/TextureRect" unique_id=20402670]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 43.0
+value = 100.0
+fill_mode = 2
+texture_progress = ExtResource("4_puuxp")
+
+[node name="TextureProgressBarDown" type="TextureProgressBar" parent="Upgrades/TextureButton/TextureRect" unique_id=301388141]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 28.0
+offset_right = 47.0
+offset_bottom = 68.0
+value = 100.0
+fill_mode = 2
+texture_progress = ExtResource("5_3xooj")
+
+[node name="Label2" type="Label" parent="Upgrades/TextureButton/TextureRect" unique_id=1999297481]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -30.0
+offset_right = 85.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "7"
+label_settings = SubResource("LabelSettings_edqev")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="Upgrades" unique_id=1903547762]
+texture_filter = 1
 layout_mode = 2
+texture_normal = ExtResource("2_ebmii")
+
+[node name="Label2" type="Label" parent="Upgrades/TextureButton2" unique_id=602942414]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Press 2 for
 Speed Up"
 label_settings = SubResource("LabelSettings_ebmii")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureButton2" type="TextureButton" parent="Upgrades/Label2" unique_id=1903547762]
-layout_mode = 0
-offset_left = -24.0
-offset_right = -24.0
-offset_bottom = 53.0
-
-[node name="Label3" type="Label" parent="Upgrades" unique_id=148570085]
+[node name="TextureButton3" type="TextureButton" parent="Upgrades" unique_id=1795011065]
+texture_filter = 1
 layout_mode = 2
+texture_normal = ExtResource("2_ebmii")
+
+[node name="Label3" type="Label" parent="Upgrades/TextureButton3" unique_id=148570085]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Press 3 for
 teleport dash"
 label_settings = SubResource("LabelSettings_tm43b")
-
-[node name="TextureButton3" type="TextureButton" parent="Upgrades/Label3" unique_id=1795011065]
-layout_mode = 0
-offset_left = 138.0
-offset_right = 138.0
-offset_bottom = 53.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=1535621354]
 visible = false
