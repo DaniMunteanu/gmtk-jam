@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dl3ssr804p6am" path="res://Sprites/HourglassFinish/SandProgressDown.png" id="4_jwe2p"]
 [ext_resource type="Texture2D" uid="uid://dgll5thhpve5c" path="res://Sprites/HourglassFinish/SandFalling.png" id="5_45po0"]
 [ext_resource type="Texture2D" uid="uid://bnw8fiy2otnwb" path="res://Sprites/HourglassFinish/HourglassCat.png" id="6_em4e7"]
+[ext_resource type="Texture2D" uid="uid://bgwq0umcu8ove" path="res://Sprites/HourglassFinish/PlayerBreaking.png" id="8_jwe2p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n708l"]
 atlas = ExtResource("5_45po0")
@@ -30,7 +31,89 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_45po0"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(0, 0, 140, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfen2"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(140, 0, 140, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkpk7"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(280, 0, 140, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amxmq"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(420, 0, 140, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxu8g"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(560, 0, 140, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3ln7"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(0, 90, 140, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwvln"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(140, 90, 140, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk7ea"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(280, 90, 140, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y60xa"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(420, 90, 140, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6s5p"]
+atlas = ExtResource("8_jwe2p")
+region = Rect2(560, 90, 140, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_umu6e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45po0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfen2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkpk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amxmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxu8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3ln7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwvln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y60xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6s5p")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ragau"]
+size = Vector2(135, 160)
+
 [node name="HourglassFinish" type="Node2D" unique_id=310234343]
+process_mode = 3
 texture_filter = 1
 script = ExtResource("1_irj8m")
 
@@ -80,3 +163,36 @@ texture = ExtResource("6_em4e7")
 hframes = 3
 vframes = 3
 frame = 8
+
+[node name="PlayerBreakingLeft" type="AnimatedSprite2D" parent="." unique_id=741956579]
+visible = false
+z_index = 5
+position = Vector2(-58, 115)
+sprite_frames = SubResource("SpriteFrames_umu6e")
+frame = 9
+frame_progress = 1.0
+
+[node name="PlayerBreakingRight" type="AnimatedSprite2D" parent="." unique_id=339531970]
+visible = false
+z_index = 5
+position = Vector2(58, 115)
+sprite_frames = SubResource("SpriteFrames_umu6e")
+frame = 9
+frame_progress = 1.0
+flip_h = true
+
+[node name="VictoryZoneLeft" type="Area2D" parent="." unique_id=1581708474]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VictoryZoneLeft" unique_id=942378546]
+position = Vector2(-76.5, 80)
+shape = SubResource("RectangleShape2D_ragau")
+
+[node name="VictoryZoneRight" type="Area2D" parent="." unique_id=382438866]
+position = Vector2(153, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VictoryZoneRight" unique_id=846139211]
+position = Vector2(-76.5, 80)
+shape = SubResource("RectangleShape2D_ragau")
+
+[connection signal="body_entered" from="VictoryZoneLeft" to="." method="_on_victory_zone_left_body_entered"]
+[connection signal="body_entered" from="VictoryZoneRight" to="." method="_on_victory_zone_right_body_entered"]
