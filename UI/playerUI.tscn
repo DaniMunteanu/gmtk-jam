@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b3glp36buhcvu" path="res://UI/player_ui.gd" id="1_225y7"]
 [ext_resource type="Texture2D" uid="uid://hyarjjgh0mmt" path="res://Sprites/Button.png" id="2_ebmii"]
 [ext_resource type="Texture2D" uid="uid://bjq8s8rej3rx" path="res://Sprites/HourglassAbilities/HourglassBorder.png" id="3_p41k2"]
+[ext_resource type="Script" uid="uid://fypexwu2lh6u" path="res://UI/hourglass.gd" id="3_puuxp"]
 [ext_resource type="Texture2D" uid="uid://diaiucax77scx" path="res://Sprites/HourglassAbilities/HourglassProgressUp.png" id="4_puuxp"]
 [ext_resource type="Texture2D" uid="uid://d3qjavy7iqc45" path="res://Sprites/HourglassAbilities/HourglassProgressDown.png" id="5_3xooj"]
 
@@ -21,11 +22,10 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_s7eya"]
 font_size = 48
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1722666215 node_paths=PackedStringArray("label_arr", "btn_arr", "upgrade_arr")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1722666215 node_paths=PackedStringArray("label_arr", "hourglass_arr")]
 script = ExtResource("1_225y7")
 label_arr = [NodePath("Upgrades/TextureButton/Label"), NodePath("Upgrades/TextureButton2/Label2"), NodePath("Upgrades/TextureButton3/Label3")]
-btn_arr = [null, null, null]
-upgrade_arr = [null, null, null]
+hourglass_arr = [NodePath("Upgrades/TextureButton/H1"), NodePath("Upgrades/TextureButton2/H2"), NodePath("Upgrades/TextureButton3/H3")]
 
 [node name="Upgrades" type="HBoxContainer" parent="." unique_id=1091525042]
 anchors_preset = 5
@@ -45,7 +45,6 @@ texture_normal = ExtResource("2_ebmii")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Upgrades/TextureButton" unique_id=750869090]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,36 +63,56 @@ label_settings = SubResource("LabelSettings_225y7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Upgrades/TextureButton" unique_id=1233638760]
-layout_mode = 0
-offset_left = 10.0
+[node name="H1" type="Control" parent="Upgrades/TextureButton" unique_id=177894591 node_paths=PackedStringArray("progress_up", "progress_down")]
+visible = false
+anchors_preset = 0
+offset_left = 40.0
 offset_top = 6.0
-offset_right = 50.0
-offset_bottom = 54.0
-texture = ExtResource("3_p41k2")
-stretch_mode = 5
+offset_right = 80.0
+offset_bottom = 46.0
+script = ExtResource("3_puuxp")
+progress_up = NodePath("TextureProgressBarUp")
+progress_down = NodePath("TextureProgressBarDown")
+metadata/_custom_type_script = "uid://fypexwu2lh6u"
 
-[node name="TextureProgressBarUp" type="TextureProgressBar" parent="Upgrades/TextureButton/TextureRect" unique_id=20402670]
+[node name="TextureProgressBarUp" type="TextureProgressBar" parent="Upgrades/TextureButton/H1" unique_id=20402670]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 3.0
 offset_right = 47.0
 offset_bottom = 43.0
 value = 100.0
-fill_mode = 2
+fill_mode = 3
 texture_progress = ExtResource("4_puuxp")
 
-[node name="TextureProgressBarDown" type="TextureProgressBar" parent="Upgrades/TextureButton/TextureRect" unique_id=301388141]
+[node name="TextureProgressBarDown" type="TextureProgressBar" parent="Upgrades/TextureButton/H1" unique_id=301388141]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 28.0
 offset_right = 47.0
 offset_bottom = 68.0
 value = 100.0
-fill_mode = 2
+fill_mode = 3
 texture_progress = ExtResource("5_3xooj")
 
-[node name="Label2" type="Label" parent="Upgrades/TextureButton/TextureRect" unique_id=1999297481]
+[node name="TextureRect" type="TextureRect" parent="Upgrades/TextureButton/H1" unique_id=1233638760]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_p41k2")
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Upgrades/TextureButton/H1/TextureRect" unique_id=1999297481]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -135,6 +154,80 @@ label_settings = SubResource("LabelSettings_ebmii")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="H2" type="Control" parent="Upgrades/TextureButton2" unique_id=948365899 node_paths=PackedStringArray("progress_up", "progress_down")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_puuxp")
+progress_up = NodePath("TextureProgressBarUp")
+progress_down = NodePath("TextureProgressBarDown")
+metadata/_custom_type_script = "uid://fypexwu2lh6u"
+
+[node name="TextureProgressBarUp" type="TextureProgressBar" parent="Upgrades/TextureButton2/H2" unique_id=1769585778]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 43.0
+value = 100.0
+fill_mode = 3
+texture_progress = ExtResource("4_puuxp")
+
+[node name="TextureProgressBarDown" type="TextureProgressBar" parent="Upgrades/TextureButton2/H2" unique_id=485722650]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 28.0
+offset_right = 47.0
+offset_bottom = 68.0
+value = 100.0
+fill_mode = 3
+texture_progress = ExtResource("5_3xooj")
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/TextureButton2/H2" unique_id=216636612]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_p41k2")
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Upgrades/TextureButton2/H2/TextureRect" unique_id=1527683766]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -30.0
+offset_right = 85.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "7"
+label_settings = SubResource("LabelSettings_edqev")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TextureButton3" type="TextureButton" parent="Upgrades" unique_id=1795011065]
 texture_filter = 1
 layout_mode = 2
@@ -156,6 +249,73 @@ grow_vertical = 2
 text = "Press 3 for
 teleport dash"
 label_settings = SubResource("LabelSettings_tm43b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="H3" type="Control" parent="Upgrades/TextureButton3" unique_id=975987985 node_paths=PackedStringArray("progress_up", "progress_down")]
+visible = false
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 6.0
+offset_right = 80.0
+offset_bottom = 46.0
+script = ExtResource("3_puuxp")
+progress_up = NodePath("TextureProgressBarUp")
+progress_down = NodePath("TextureProgressBarDown")
+metadata/_custom_type_script = "uid://fypexwu2lh6u"
+
+[node name="TextureProgressBarUp" type="TextureProgressBar" parent="Upgrades/TextureButton3/H3" unique_id=763006254]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 43.0
+value = 100.0
+fill_mode = 3
+texture_progress = ExtResource("4_puuxp")
+
+[node name="TextureProgressBarDown" type="TextureProgressBar" parent="Upgrades/TextureButton3/H3" unique_id=2034577886]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 28.0
+offset_right = 47.0
+offset_bottom = 68.0
+value = 100.0
+fill_mode = 3
+texture_progress = ExtResource("5_3xooj")
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/TextureButton3/H3" unique_id=1925836799]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_p41k2")
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Upgrades/TextureButton3/H3/TextureRect" unique_id=935755393]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -30.0
+offset_right = 85.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "7"
+label_settings = SubResource("LabelSettings_edqev")
 horizontal_alignment = 1
 vertical_alignment = 1
 

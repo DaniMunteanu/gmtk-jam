@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cbl6hdllx5fj5" path="res://Levels/Obstacles/Mummy.tscn" id="6_05pb0"]
 [ext_resource type="PackedScene" uid="uid://bixjs3x33p0ba" path="res://UI/HourglassUI.tscn" id="8_5g41i"]
 [ext_resource type="Texture2D" uid="uid://djm0qmflsy3et" path="res://Sprites/Tilemap.png" id="8_xcayt"]
+[ext_resource type="Shader" uid="uid://be6o1weacxoti" path="res://Shaders/rewind.gdshader" id="9_5g41i"]
+[ext_resource type="Texture2D" uid="uid://lnaw6o18lve5" path="res://Shaders/white.png" id="10_7fl83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(2586, 115)
@@ -119,6 +121,12 @@ sources/0 = SubResource("TileSetAtlasSource_xcayt")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wi6ju"]
 size = Vector2(5765, 578)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrivr"]
+shader = ExtResource("9_5g41i")
+shader_parameter/base = Color(0.46666667, 0.46666667, 0.46666667, 1)
+shader_parameter/frequency = 60.0
+shader_parameter/depth = 0.005
 
 [node name="Level1" type="Node2D" unique_id=658485625 node_paths=PackedStringArray("player", "game_timer")]
 z_index = -1
@@ -232,6 +240,17 @@ position = Vector2(414.5, 205)
 shape = SubResource("RectangleShape2D_wi6ju")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1041834782]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=163695966]
+visible = false
+z_index = 20
+material = SubResource("ShaderMaterial_xrivr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_7fl83")
 
 [node name="HourglassUI" parent="CanvasLayer" unique_id=2122711463 instance=ExtResource("8_5g41i")]
 offset_left = 1.0

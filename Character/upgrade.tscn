@@ -13,7 +13,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="ActiveTimer" type="Timer" parent="." unique_id=1375041792]
-wait_time = 10.0
+wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
