@@ -15,7 +15,6 @@ texture = ExtResource("1_wcc2u")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-0:0/0/physics_layer_0/polygon_0/one_way = true
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 2:0/0 = 0
@@ -72,13 +71,13 @@ shader_parameter/base = Color(0.46666667, 0.46666667, 0.46666667, 1)
 shader_parameter/frequency = 60.0
 shader_parameter/depth = 0.005
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v115i"]
-size = Vector2(127, 121)
-
 [node name="Level2" type="Node2D" unique_id=835439264 node_paths=PackedStringArray("player", "game_timer")]
 script = ExtResource("1_jglcl")
 player = NodePath("CharacterBody2D")
 game_timer = NodePath("GameTimer")
+
+[node name="HourglassFinish" parent="." unique_id=310234343 instance=ExtResource("9_vd23k")]
+position = Vector2(-180, 28)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1916265787]
 process_mode = 2
@@ -134,13 +133,6 @@ autostart = true
 position = Vector2(-634, 126)
 player = NodePath("../CharacterBody2D")
 
-[node name="EndArea" type="Area2D" parent="." unique_id=253566814]
-visible = false
-position = Vector2(310, 131)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea" unique_id=1757660886]
-shape = SubResource("RectangleShape2D_v115i")
-
 [node name="MovingPlatform" parent="." unique_id=2094996778 instance=ExtResource("6_w0h0a")]
 position = Vector2(310, 131)
 
@@ -149,8 +141,5 @@ position = Vector2(-126, 103)
 
 [node name="EndMarker" parent="MovingPlatform2" index="3" unique_id=1221469228]
 position = Vector2(0, -80)
-
-[node name="HourglassFinish" parent="." unique_id=310234343 instance=ExtResource("9_vd23k")]
-position = Vector2(-126, 103)
 
 [editable path="MovingPlatform2"]
