@@ -4,12 +4,18 @@ extends CanvasLayer
 
 @export_group("Upgrades")
 @export var label_arr: Array[Label]
-#@export var btn_arr: Array[TextureButton]
-#@export var upgrade_arr: Array[Upgrade]
+@export var btn_arr: Array[TextureButton]
+
 @export var hourglass_arr: Array[Hourglass]
 @export var active_timer_arr: Array[Timer]
 
+@export var player: Player
+
 func _ready() -> void:
+	btn_arr[0].pressed.connect(press_one)
+	btn_arr[1].pressed.connect(press_two)
+	btn_arr[2].pressed.connect(press_three)
+	
 	for glass in hourglass_arr:
 		glass.hide()
 	#hiding the hourglasses at the beginning
@@ -38,3 +44,12 @@ func greybutt(upgrade_no: int):
 
 func show_butt(upgrade_no: int):
 	label_arr[upgrade_no - 1].self_modulate.a = 1.0
+	
+func press_one():
+	player.activate_upgrade(0)
+	
+func press_two():
+	player.activate_upgrade(1)
+	
+func press_three():
+	player.activate_upgrade(2)

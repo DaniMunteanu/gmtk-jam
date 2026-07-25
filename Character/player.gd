@@ -103,19 +103,20 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+func activate_upgrade(upgrade_index: int):
+	if upgrade_arr[upgrade_index].time_price < game_timer.time_left:
+		upgrade_arr[upgrade_index].activate()
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("one"):
-		if upgrade_arr[0].time_price < game_timer.time_left:
-			upgrade_arr[0].activate()
-			print("1st skill pressed")
+		activate_upgrade(0)
+		print("1st skill pressed")
 	if Input.is_action_just_pressed("two"):
-		if upgrade_arr[1].time_price < game_timer.time_left:
-			upgrade_arr[1].activate()
-			print("2nd skill pressed")
+		activate_upgrade(1)
+		print("2nd skill pressed")
 	if Input.is_action_just_pressed("three"):
-		if upgrade_arr[2].time_price < game_timer.time_left:
-			upgrade_arr[2].activate()
-			print("3rd skill pressed")
+		activate_upgrade(2)
+		print("3rd skill pressed")
 			
 	if can_tp and Input.is_action_just_pressed("teleport_dash"):
 		dash.play()
