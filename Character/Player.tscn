@@ -100,10 +100,20 @@ one_shot = true
 wait_time = 0.12
 one_shot = true
 
-[node name="UpgradeOne" parent="." unique_id=858234164 node_paths=PackedStringArray("player") instance=ExtResource("3_1ju47")]
+[node name="UpgradeOne" parent="." unique_id=858234164 node_paths=PackedStringArray("player", "cooldown_timer", "active_timer") instance=ExtResource("3_1ju47")]
 script = ExtResource("4_ynroq")
 player = NodePath("..")
+cooldown_timer = NodePath("CooldownTimer2")
+active_timer = NodePath("ActiveTimer2")
 self_no = 1
+
+[node name="CooldownTimer2" type="Timer" parent="UpgradeOne" unique_id=483836772]
+wait_time = 3.0
+one_shot = true
+
+[node name="ActiveTimer2" type="Timer" parent="UpgradeOne" unique_id=1163136280]
+wait_time = 2.0
+one_shot = true
 
 [node name="UpgradeTwo" type="Node" parent="." unique_id=1004038602 node_paths=PackedStringArray("player", "cooldown_timer", "active_timer")]
 script = ExtResource("5_v6d5b")
@@ -139,7 +149,8 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
-[node name="CanvasLayer" parent="." unique_id=1722666215 instance=ExtResource("7_5ydrh")]
+[node name="CanvasLayer" parent="." unique_id=1722666215 node_paths=PackedStringArray("active_timer_arr") instance=ExtResource("7_5ydrh")]
+active_timer_arr = [NodePath("../UpgradeOne/ActiveTimer2"), NodePath("../UpgradeTwo/ActiveTimer"), NodePath("../UpgradeThree/ActiveTimer")]
 
 [node name="RightRaycast" type="RayCast2D" parent="." unique_id=1092283067]
 unique_name_in_owner = true

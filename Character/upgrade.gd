@@ -26,7 +26,7 @@ func activate():
 		is_active = true
 		power_up()
 		active_timer.start()
-		player.player_ui.hide_upgrade_butt(self_no)
+		player.player_ui.hide_upgrade_butt(self_no, active_timer)
 		#aici dispare butonul si apare clepsidra albastra
 		
 
