@@ -30,6 +30,7 @@ animations = [{
 }]
 
 [node name="HourglassUI" type="Control" unique_id=2122711463]
+process_mode = 3
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
@@ -59,7 +60,7 @@ offset_top = 10.0
 offset_right = 90.0
 offset_bottom = 90.0
 step = 0.1
-value = 50.0
+value = 100.0
 fill_mode = 3
 texture_progress = ExtResource("3_qiicb")
 
@@ -70,7 +71,6 @@ offset_top = 90.0
 offset_right = 90.0
 offset_bottom = 170.0
 step = 0.1
-value = 50.0
 fill_mode = 3
 texture_progress = ExtResource("4_33pwi")
 

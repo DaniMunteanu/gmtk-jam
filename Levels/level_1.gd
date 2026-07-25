@@ -23,6 +23,9 @@ func _ready() -> void:
 	hourglass_finish.sand_progress_up.max_value = game_timer.wait_time
 	hourglass_finish.sand_progress_down.max_value = game_timer.wait_time
 	
+	hourglass_ui.update_sand(game_timer.time_left)
+	hourglass_finish.update_sand(game_timer.time_left)
+	
 	rewind_texture.visible = false
 	Sceneswitcher.rewind.connect(_on_rewind)
 	
@@ -34,7 +37,9 @@ func _ready() -> void:
 	#cam_player.play("camera_pan")
 	#await cam_player.animation_finished
 	#cam_player.queue_free()
-	camera.queue_free()
+	#camera.queue_free()
+	
+	player.camera.make_current()
 	process_mode = Node.PROCESS_MODE_INHERIT
 	
 	player.game_timer = game_timer
@@ -55,11 +60,12 @@ func _on_game_timer_timeout() -> void:
 	#aici vine game over screen!
 	get_tree().quit()
 
-
+"""
 func _on_end_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		print("you won! goingto next lvl..")
 		get_tree().change_scene_to_file("")
+"""
 
 func game_timer_reduce(time_cost: float):
 	print("the cost is: ", time_cost)
