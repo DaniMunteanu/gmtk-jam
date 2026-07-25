@@ -230,7 +230,7 @@ shape = SubResource("CapsuleShape2D_ragau")
 
 [node name="jump_sound" type="AudioStreamPlayer" parent="Audio" unique_id=1344285226]
 stream = ExtResource("10_o1y46")
-volume_db = -2.909
+volume_db = -44.297
 
 [node name="rewind" type="AudioStreamPlayer" parent="Audio" unique_id=1394585585]
 process_mode = 2
