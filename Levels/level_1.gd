@@ -3,6 +3,7 @@ class_name Level
 
 @export var player: Player
 @export var game_timer: Timer
+@export var win_path: String
 #@onready var cam_player: AnimationPlayer = $Camera2D/AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
 @onready var start_area: Area2D = $StartArea
@@ -51,7 +52,7 @@ func _on_game_timer_timeout() -> void:
 func _on_end_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		print("you won! goingto next lvl..")
-		get_tree().change_scene_to_file("res://Levels/Level2.tscn")
+		get_tree().change_scene_to_file("")
 
 func game_timer_reduce(time_cost: float):
 	print("the cost is: ", time_cost)
