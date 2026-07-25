@@ -5,7 +5,6 @@ extends AnimatableBody2D
 @export var duration: float = 2
 
 func _ready() -> void:
-	pass
 	global_position = start_marker.global_position
 	move()
 
