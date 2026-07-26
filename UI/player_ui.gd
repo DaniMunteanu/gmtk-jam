@@ -38,6 +38,9 @@ func greybutt(upgrade_no: int):
 	label_arr[upgrade_no - 1].visible = true
 	label_arr[upgrade_no - 1].self_modulate.a = 0.2
 	hourglass_arr[upgrade_no -1].hide()
+	
+	#btn_arr[upgrade_no -1].disabled = true
+	
 	#for now, it just returns the label
 	#hide the hourglass, show the grey btn
 
