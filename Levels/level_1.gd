@@ -18,7 +18,7 @@ class_name Level
 @export var game_over_music: AudioStream
 #@export var heartbeat: AudioStream
 
-var die_cost: float = 25.0
+var die_cost: float = 30.0
 var is_rewinding: bool = false
 
 var level_completed: bool = false

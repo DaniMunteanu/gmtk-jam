@@ -143,7 +143,7 @@ visible = false
 level_path = "res://Levels/level05.tscn"
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1316068300]
-wait_time = 180.0
+wait_time = 175.0
 one_shot = true
 autostart = true
 

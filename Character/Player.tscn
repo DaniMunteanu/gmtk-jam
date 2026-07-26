@@ -165,14 +165,15 @@ script = ExtResource("4_ynroq")
 player = NodePath("..")
 cooldown_timer = NodePath("CooldownTimer2")
 active_timer = NodePath("ActiveTimer2")
+time_price = 25.0
 self_no = 1
 
 [node name="CooldownTimer2" type="Timer" parent="UpgradeOne" unique_id=483836772]
-wait_time = 3.0
+wait_time = 10.0
 one_shot = true
 
 [node name="ActiveTimer2" type="Timer" parent="UpgradeOne" unique_id=1163136280]
-wait_time = 10.0
+wait_time = 9.0
 one_shot = true
 
 [node name="UpgradeTwo" type="Node" parent="." unique_id=1004038602 node_paths=PackedStringArray("player", "cooldown_timer", "active_timer")]
@@ -186,11 +187,11 @@ time_price = 10.0
 self_no = 2
 
 [node name="CooldownTimer" type="Timer" parent="UpgradeTwo" unique_id=58477692]
-wait_time = 5.0
+wait_time = 9.0
 one_shot = true
 
 [node name="ActiveTimer" type="Timer" parent="UpgradeTwo" unique_id=654583603]
-wait_time = 10.0
+wait_time = 9.0
 one_shot = true
 
 [node name="UpgradeThree" type="Node" parent="." unique_id=2030889772 node_paths=PackedStringArray("player", "cooldown_timer", "active_timer")]
@@ -202,11 +203,11 @@ time_price = 50.0
 self_no = 3
 
 [node name="CooldownTimer" type="Timer" parent="UpgradeThree" unique_id=1720785599]
-wait_time = 2.0
+wait_time = 11.0
 one_shot = true
 
 [node name="ActiveTimer" type="Timer" parent="UpgradeThree" unique_id=1340193884]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="CanvasLayer" parent="." unique_id=1722666215 node_paths=PackedStringArray("active_timer_arr", "player") instance=ExtResource("7_5ydrh")]
