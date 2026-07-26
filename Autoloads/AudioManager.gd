@@ -9,7 +9,7 @@ var music_volume : float = 0.25
 var sfx_volume : float = 0.25
 var music_player: AudioStreamPlayer
 var music_player_menu: AudioStreamPlayer
-var music_player_gameover: AudioStreamPlayer
+@export var music_player_gameover: AudioStreamPlayer
 
 var coming_from_credits: bool = false
 

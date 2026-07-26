@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b5ek03hhbwkoj" path="res://Levels/level_1.gd" id="1_chckt"]
 [ext_resource type="Texture2D" uid="uid://djm0qmflsy3et" path="res://Sprites/Tilemap.png" id="2_32cqm"]
+[ext_resource type="AudioStream" uid="uid://bg3xpbi0a8ioh" path="res://Audio/6. Ash and Oasis.mp3" id="2_othqo"]
 [ext_resource type="PackedScene" uid="uid://cm1wc6a1jk4u8" path="res://Levels/HourglassFinish.tscn" id="2_wwqv8"]
+[ext_resource type="AudioStream" uid="uid://d2ep706smfecc" path="res://Audio/GAME_OVER_SONG.mp3" id="3_57uru"]
 [ext_resource type="PackedScene" uid="uid://bfmnrnrcy7ela" path="res://Character/Player.tscn" id="3_wwqv8"]
 [ext_resource type="PackedScene" uid="uid://bixjs3x33p0ba" path="res://UI/HourglassUI.tscn" id="4_nd6cs"]
 [ext_resource type="Shader" uid="uid://be6o1weacxoti" path="res://Shaders/rewind.gdshader" id="5_ssmfe"]
@@ -79,10 +81,12 @@ size = Vector2(63, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(9839, 1446)
 
-[node name="Level" type="Node2D" unique_id=835439264 node_paths=PackedStringArray("player", "game_timer")]
+[node name="Level2" type="Node2D" unique_id=835439264 node_paths=PackedStringArray("player", "game_timer")]
 script = ExtResource("1_chckt")
 player = NodePath("CharacterBody2D")
 game_timer = NodePath("GameTimer")
+level_music = ExtResource("2_othqo")
+game_over_music = ExtResource("3_57uru")
 
 [node name="HourglassFinish" parent="." unique_id=310234343 node_paths=PackedStringArray("camera") instance=ExtResource("2_wwqv8")]
 position = Vector2(-879, -1281)
@@ -153,7 +157,7 @@ player = NodePath("../CharacterBody2D")
 position = Vector2(-1341, -1118)
 
 [node name="EndMarker" parent="Platforms/MovingPlatform" index="3" unique_id=1221469228]
-position = Vector2(334, 0)
+position = Vector2(288, 0)
 
 [node name="MovingPlatform2" parent="Platforms" unique_id=1809599138 instance=ExtResource("9_wwqv8")]
 position = Vector2(-1, -480)

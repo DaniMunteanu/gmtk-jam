@@ -10,10 +10,11 @@ var game_timer: Timer
 @onready var power_up: AudioStreamPlayer = $Audio/power_up
 @onready var walk: AudioStreamPlayer = $Audio/walk
 @onready var dash: AudioStreamPlayer = $Audio/dash
+@onready var hurt: AudioStreamPlayer = $Audio/hurt
+@onready var glass_break: AudioStreamPlayer = $Audio/glass_break
+@onready var heartbeat: AudioStreamPlayer = $Audio/heartbeat
+
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
-
-
-
 
 @export var player_ui: CanvasLayer
 @export_category("Upgrades")

@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://batc8t7a266a3" path="res://Audio/power_activate.wav" id="13_fo5vu"]
 [ext_resource type="AudioStream" uid="uid://cikw73k5asp2m" path="res://Audio/stone_pixelated_footstep.wav" id="14_p4yhq"]
 [ext_resource type="AudioStream" uid="uid://bja10gpm03ngb" path="res://Audio/hurt.wav" id="15_fo5vu"]
+[ext_resource type="AudioStream" uid="uid://dk7m1qxlg7jkw" path="res://Audio/win_sound.wav" id="17_iir43"]
+[ext_resource type="AudioStream" uid="uid://dsx7cl1r54obv" path="res://Audio/drum_heartbeat.mp3" id="18_rk8it"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w0h0a"]
 shader = ExtResource("2_p4yhq")
@@ -231,7 +233,8 @@ shape = SubResource("CapsuleShape2D_ragau")
 
 [node name="jump_sound" type="AudioStreamPlayer" parent="Audio" unique_id=1344285226]
 stream = ExtResource("10_o1y46")
-volume_db = -44.297
+volume_db = -10.0
+bus = &"Sfx"
 
 [node name="rewind" type="AudioStreamPlayer" parent="Audio" unique_id=1394585585]
 process_mode = 2
@@ -239,18 +242,33 @@ stream = ExtResource("11_qolio")
 
 [node name="dash" type="AudioStreamPlayer" parent="Audio" unique_id=1949466432]
 stream = ExtResource("12_28ti7")
+volume_db = -1.0
+bus = &"Sfx"
 
 [node name="power_up" type="AudioStreamPlayer" parent="Audio" unique_id=2063204086]
 stream = ExtResource("13_fo5vu")
+volume_db = -7.0
+bus = &"Sfx"
 
 [node name="walk" type="AudioStreamPlayer" parent="Audio" unique_id=800831198]
 stream = ExtResource("14_p4yhq")
 volume_db = -10.41
+bus = &"Sfx"
 
 [node name="game_over" type="AudioStreamPlayer" parent="Audio" unique_id=40543535]
 
 [node name="hurt" type="AudioStreamPlayer" parent="Audio" unique_id=1011763043]
+process_mode = 3
 stream = ExtResource("15_fo5vu")
+bus = &"Sfx"
+
+[node name="glass_break" type="AudioStreamPlayer" parent="Audio" unique_id=487970714]
+stream = ExtResource("17_iir43")
+volume_db = -1.0
+bus = &"Sfx"
+
+[node name="heartbeat" type="AudioStreamPlayer" parent="Audio" unique_id=1475971710]
+stream = ExtResource("18_rk8it")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=775802297]
 libraries/ = SubResource("AnimationLibrary_rk8it")
