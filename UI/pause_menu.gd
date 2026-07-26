@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var options_panel = %OptionsPanel
+@onready var options_panel: Control = $OptionsPanel
 
 func _ready() -> void:
 	hide()

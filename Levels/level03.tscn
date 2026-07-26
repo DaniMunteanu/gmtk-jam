@@ -88,7 +88,7 @@ player = NodePath("CharacterBody2D")
 game_timer = NodePath("GameTimer")
 
 [node name="HourglassFinish" parent="." unique_id=310234343 node_paths=PackedStringArray("camera") instance=ExtResource("2_cue20")]
-position = Vector2(316, 31)
+position = Vector2(208, -544)
 camera = NodePath("../Camera2D")
 next_level_path = "res://Levels/level04.tscn"
 

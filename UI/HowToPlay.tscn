@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://dqsiikcmggwe5"]
+
+[ext_resource type="Texture2D" uid="uid://6r786uen36gj" path="res://Sprites/UI/Panel.png" id="1_t445j"]
+[ext_resource type="Script" uid="uid://dbcyqiel7me22" path="res://UI/how_to_play.gd" id="1_va4iu"]
+[ext_resource type="Texture2D" uid="uid://0uoe05hb0n22" path="res://Sprites/UI/MenuButton.png" id="2_va4iu"]
+[ext_resource type="Script" uid="uid://bhko7dre32wi3" path="res://UI/resizable_button.gd" id="3_fwke0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j06ch"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_uxq3b"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="HowToPlay" type="Control" unique_id=1938812673]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_va4iu")
+
+[node name="Panel" type="Panel" parent="." unique_id=1942480540]
+self_modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -15.0
+offset_right = 9.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsBackground" type="TextureRect" parent="." unique_id=1355355360]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.00006
+offset_right = 320.0
+offset_bottom = 180.00006
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t445j")
+
+[node name="Title" type="Label" parent="." unique_id=928660701]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -146.5
+offset_top = 37.0
+offset_right = 146.5
+offset_bottom = 102.0
+grow_horizontal = 2
+text = "How to play"
+label_settings = SubResource("LabelSettings_j06ch")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="." unique_id=1908152642]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -284.0
+offset_top = 102.0
+offset_right = 286.0
+offset_bottom = 312.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "	Your goal is to reach the cat trapped in the hourglass before time runs out. Throughout the levels, there are obstacles you can avoid by using the 3 abilities displayed at the top of the screen.
+	Controls:
+		- Movement: WASD
+		- Jump: Space
+		- Teleport Dash: Shift"
+
+[node name="Close" type="TextureButton" parent="." unique_id=886273085]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 107.0
+offset_top = -109.0
+offset_right = 282.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+texture_normal = ExtResource("2_va4iu")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_fwke0")
+
+[node name="Label" type="Label" parent="Close" unique_id=1796748623]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -37.0
+offset_right = 59.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Close"
+label_settings = SubResource("LabelSettings_uxq3b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

@@ -21,6 +21,7 @@ var level_completed: bool = false
 var level_lost: bool = false
 
 func _ready() -> void:
+	player.anim_player.play("RESET")
 	set_cam_limits()
 	hourglass_ui.sand_progress_up.max_value = game_timer.wait_time
 	hourglass_ui.sand_progress_down.max_value = game_timer.wait_time
