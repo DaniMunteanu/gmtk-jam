@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://fypexwu2lh6u" path="res://UI/hourglass.gd" id="3_puuxp"]
 [ext_resource type="Texture2D" uid="uid://diaiucax77scx" path="res://Sprites/HourglassAbilities/HourglassProgressUp.png" id="4_puuxp"]
 [ext_resource type="Texture2D" uid="uid://d3qjavy7iqc45" path="res://Sprites/HourglassAbilities/HourglassProgressDown.png" id="5_3xooj"]
+[ext_resource type="PackedScene" uid="uid://fujp0m2jfpul" path="res://UI/pause_menu.tscn" id="8_edqev"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h68op"]
 atlas = ExtResource("2_ebmii")
@@ -373,3 +374,6 @@ visible = false
 offset_right = 279.0
 offset_bottom = 235.0
 label_settings = SubResource("LabelSettings_s7eya")
+
+[node name="PauseMenu" parent="." unique_id=101396324 instance=ExtResource("8_edqev")]
+visible = false

@@ -141,6 +141,7 @@ JumpBufferTimer = NodePath("JumpBufferTimer")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1093916759]
 texture_filter = 1
 material = SubResource("ShaderMaterial_w0h0a")
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_13qdw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=636502317]
