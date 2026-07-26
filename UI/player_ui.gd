@@ -5,7 +5,6 @@ extends CanvasLayer
 @export_group("Upgrades")
 @export var label_arr: Array[Label]
 @export var btn_arr: Array[TextureButton]
-
 @export var hourglass_arr: Array[Hourglass]
 @export var active_timer_arr: Array[Timer]
 

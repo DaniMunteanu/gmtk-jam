@@ -107,6 +107,7 @@ func _physics_process(delta: float) -> void:
 func activate_upgrade(upgrade_index: int):
 	if upgrade_arr[upgrade_index].time_price < game_timer.time_left:
 		upgrade_arr[upgrade_index].activate()
+	else: player_ui.greybutt(upgrade_index + 1)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("one"):
