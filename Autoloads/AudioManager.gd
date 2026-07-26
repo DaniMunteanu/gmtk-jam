@@ -79,7 +79,7 @@ func play_sfx(stream: AudioStream) -> void:
 	
 func stop_sfx() -> void:
 	dj.stop()
-	
+
 func play_gameover_music(stream: AudioStream) -> void:
 	music_player_gameover.stream = stream
 	music_player_gameover.play()
