@@ -12,10 +12,13 @@ class_name Level
 @onready var hourglass_finish: HourglassFinish = $HourglassFinish
 @onready var rewind_texture: TextureRect = $CanvasLayer/TextureRect
 
+@onready var defeat_screen: DefeatScreen = $CanvasLayer/DefeatScreen
+
 var die_cost: float = 25.0
 var is_rewinding: bool = false
 
 var level_completed: bool = false
+var level_lost: bool = false
 
 func _ready() -> void:
 	set_cam_limits()
@@ -34,10 +37,10 @@ func _ready() -> void:
 	Sceneswitcher.rewind.connect(_on_rewind)
 	
 	process_mode = Node.PROCESS_MODE_DISABLED
-	await get_tree().create_timer(0.1).timeout #2.0
+	await get_tree().create_timer(2).timeout #2.0
 	var tween = get_tree().create_tween()
 	tween.tween_property(camera, "position", player.camera.global_position, 6.0 )
-	await get_tree().create_timer(0.1).timeout #6.0
+	await get_tree().create_timer(6).timeout #6.0
 	#cam_player.play("camera_pan")
 	#await cam_player.animation_finished
 	#cam_player.queue_free()
@@ -64,9 +67,12 @@ func _on_level_won():
 	game_timer.stop()
 
 func _on_game_timer_timeout() -> void:
+	level_lost = true
 	print("ai pierdut!")
 	#aici vine game over screen!
-	get_tree().quit()
+	player.player_ui.hide()
+	defeat_screen.show()
+	set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 
 """
 func _on_end_area_body_entered(body: Node2D) -> void:
@@ -101,7 +107,10 @@ func _on_rewind():
 	start_area.spawn_pos.global_position, 1.5) # Ajustabil
 	await get_tree().create_timer(1.6).timeout
 	player.rewind.stop()
-	process_mode = Node.PROCESS_MODE_INHERIT
+	
+	if level_lost == false:
+		process_mode = Node.PROCESS_MODE_INHERIT
+		
 	player.hurtbox.get_node("CollisionShape2D").set_deferred("disabled", false)
 	is_rewinding = false
 	rewind_texture.visible = false

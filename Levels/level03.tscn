@@ -1,12 +1,14 @@
 [gd_scene format=4 uid="uid://q4nibf8wfqma"]
 
 [ext_resource type="Script" uid="uid://b5ek03hhbwkoj" path="res://Levels/level_1.gd" id="1_e2i53"]
+[ext_resource type="PackedScene" uid="uid://cm1wc6a1jk4u8" path="res://Levels/HourglassFinish.tscn" id="2_cue20"]
 [ext_resource type="Texture2D" uid="uid://djm0qmflsy3et" path="res://Sprites/Tilemap.png" id="2_tpxxt"]
 [ext_resource type="PackedScene" uid="uid://bfmnrnrcy7ela" path="res://Character/Player.tscn" id="3_eyjwd"]
 [ext_resource type="PackedScene" uid="uid://bixjs3x33p0ba" path="res://UI/HourglassUI.tscn" id="4_cue20"]
 [ext_resource type="Shader" uid="uid://be6o1weacxoti" path="res://Shaders/rewind.gdshader" id="5_ekmt3"]
 [ext_resource type="Texture2D" uid="uid://lnaw6o18lve5" path="res://Shaders/white.png" id="6_h1gcj"]
 [ext_resource type="PackedScene" uid="uid://b70pb8nr044ud" path="res://Levels/StartArea.tscn" id="7_1qian"]
+[ext_resource type="PackedScene" uid="uid://cnkqxwxpeey08" path="res://UI/DefeatScreen.tscn" id="7_eyjwd"]
 [ext_resource type="PackedScene" uid="uid://dxrq803gwyfos" path="res://Levels/platform.tscn" id="8_tpxxt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jglcl"]
@@ -71,9 +73,6 @@ shader_parameter/base = Color(0.46666667, 0.46666667, 0.46666667, 1)
 shader_parameter/frequency = 60.0
 shader_parameter/depth = 0.005
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v115i"]
-size = Vector2(127, 121)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpxxt"]
 size = Vector2(65.082504, 32)
 
@@ -87,6 +86,11 @@ size = Vector2(8534, 411)
 script = ExtResource("1_e2i53")
 player = NodePath("CharacterBody2D")
 game_timer = NodePath("GameTimer")
+
+[node name="HourglassFinish" parent="." unique_id=310234343 node_paths=PackedStringArray("camera") instance=ExtResource("2_cue20")]
+position = Vector2(316, 31)
+camera = NodePath("../Camera2D")
+next_level_path = "res://Levels/level04.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1916265787]
 process_mode = 2
@@ -133,6 +137,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_h1gcj")
 
+[node name="DefeatScreen" parent="CanvasLayer" unique_id=720574116 instance=ExtResource("7_eyjwd")]
+visible = false
+level_path = "res://Levels/level03.tscn"
+
 [node name="GameTimer" type="Timer" parent="." unique_id=1316068300]
 wait_time = 180.0
 one_shot = true
@@ -141,12 +149,6 @@ autostart = true
 [node name="StartArea" parent="." unique_id=2117014298 node_paths=PackedStringArray("player") instance=ExtResource("7_1qian")]
 position = Vector2(-959, 667)
 player = NodePath("../CharacterBody2D")
-
-[node name="EndArea" type="Area2D" parent="." unique_id=253566814]
-position = Vector2(310, 131)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea" unique_id=1757660886]
-shape = SubResource("RectangleShape2D_v115i")
 
 [node name="Platforms" type="Node" parent="." unique_id=1257226606]
 
@@ -247,7 +249,6 @@ position = Vector2(761, 1203.5)
 shape = SubResource("RectangleShape2D_xrivr")
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
-[connection signal="body_entered" from="EndArea" to="." method="_on_end_area_body_entered"]
 
 [editable path="Platforms/MovingPlatform"]
 [editable path="Platforms/MovingPlatform2"]

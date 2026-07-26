@@ -1,13 +1,31 @@
 [gd_scene format=3 uid="uid://cg14wal0dj7xw"]
 
 [ext_resource type="Script" uid="uid://hedbdndswmej" path="res://UI/main_menu.gd" id="1_otjfi"]
-[ext_resource type="Texture2D" uid="uid://cxf7xcp0l1ryo" path="res://UI/assets-drawn/piramide.webp" id="2_obtq6"]
-[ext_resource type="Script" uid="uid://b6nrig0wmt6pq" path="res://Scripts/scene_switcher.gd" id="3_t4ff4"]
-[ext_resource type="Texture2D" uid="uid://0vhb5imfbeuo" path="res://UI/assets-drawn/play.png" id="4_w5vcv"]
-[ext_resource type="Texture2D" uid="uid://bhpqxh4hpdm51" path="res://UI/assets-drawn/settings.png" id="5_d2d4f"]
-[ext_resource type="Texture2D" uid="uid://ntlu53awt2at" path="res://UI/assets-drawn/quit.png" id="6_6vw7e"]
+[ext_resource type="Texture2D" uid="uid://40isauywhy86" path="res://Sprites/UI/MainMenu.png" id="3_w5vcv"]
+[ext_resource type="Script" uid="uid://bhko7dre32wi3" path="res://UI/resizable_button.gd" id="4_d2d4f"]
+[ext_resource type="Texture2D" uid="uid://0uoe05hb0n22" path="res://Sprites/UI/MenuButton.png" id="4_w5vcv"]
+[ext_resource type="Texture2D" uid="uid://hyarjjgh0mmt" path="res://Sprites/UI/Button.png" id="6_obtq6"]
 [ext_resource type="AudioStream" uid="uid://c8rf37l1a0snp" path="res://Audio/2. Scorchlight Mirage.ogg" id="7_obtq6"]
 [ext_resource type="PackedScene" uid="uid://ibs0ifbu0h7v" path="res://Levels/options_panel.tscn" id="8_t4ff4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6vw7e"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ff4"]
+atlas = ExtResource("6_obtq6")
+region = Rect2(0, 0, 120, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5vcv"]
+atlas = ExtResource("6_obtq6")
+region = Rect2(0, 120, 120, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2d4f"]
+atlas = ExtResource("6_obtq6")
+region = Rect2(0, 60, 120, 60)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrfef"]
+font_size = 36
 
 [node name="MainMenu" type="CanvasLayer" unique_id=26005483]
 script = ExtResource("1_otjfi")
@@ -16,7 +34,7 @@ menu_music = ExtResource("7_obtq6")
 [node name="MenuScreen" type="TextureRect" parent="." unique_id=1812530362]
 offset_right = 640.0
 offset_bottom = 360.0
-texture = ExtResource("2_obtq6")
+texture = ExtResource("3_w5vcv")
 expand_mode = 1
 
 [node name="ButtonManager" type="Control" parent="MenuScreen" unique_id=1990474681]
@@ -24,93 +42,226 @@ anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
 
-[node name="Start" type="Button" parent="MenuScreen/ButtonManager" unique_id=1885364604]
-self_modulate = Color(1, 1, 1, 0)
+[node name="Start" type="TextureButton" parent="MenuScreen/ButtonManager" unique_id=856661805]
+texture_filter = 1
 layout_mode = 0
-offset_left = 435.0
-offset_top = 48.0
-offset_right = 595.0
-offset_bottom = 100.0
-script = ExtResource("3_t4ff4")
+offset_left = 450.0
+offset_top = 88.0
+offset_right = 625.0
+offset_bottom = 146.0
+offset_transform_enabled = true
+texture_normal = ExtResource("4_w5vcv")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_d2d4f")
 
-[node name="TextureRect" type="TextureRect" parent="MenuScreen/ButtonManager/Start" unique_id=1122754066]
-layout_mode = 0
-offset_left = 15.0
-offset_right = 144.0
-offset_bottom = 48.0
-texture = ExtResource("4_w5vcv")
-expand_mode = 1
+[node name="Label" type="Label" parent="MenuScreen/ButtonManager/Start" unique_id=1123517690]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -37.0
+offset_right = 59.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+label_settings = SubResource("LabelSettings_6vw7e")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Options" type="Button" parent="MenuScreen/ButtonManager" unique_id=100740802]
-self_modulate = Color(1, 1, 1, 0)
+[node name="Options" type="TextureButton" parent="MenuScreen/ButtonManager" unique_id=1245053256]
+texture_filter = 1
 layout_mode = 0
-offset_left = 432.0
-offset_top = 146.0
-offset_right = 603.0
-offset_bottom = 200.0
-script = ExtResource("3_t4ff4")
+offset_left = 450.0
+offset_top = 150.0
+offset_right = 625.0
+offset_bottom = 208.0
+offset_transform_enabled = true
+texture_normal = ExtResource("4_w5vcv")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_d2d4f")
 
-[node name="TextureRect" type="TextureRect" parent="MenuScreen/ButtonManager/Options" unique_id=1154125202]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 3.0
-offset_right = 156.0
-offset_bottom = 50.0
-texture = ExtResource("5_d2d4f")
-expand_mode = 1
+[node name="Label" type="Label" parent="MenuScreen/ButtonManager/Options" unique_id=1857765996]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -37.0
+offset_right = 59.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_6vw7e")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Quit" type="Button" parent="MenuScreen/ButtonManager" unique_id=1292268920]
-self_modulate = Color(1, 1, 1, 0)
+[node name="Quit" type="TextureButton" parent="MenuScreen/ButtonManager" unique_id=1941881527]
+texture_filter = 1
 layout_mode = 0
-offset_left = 433.0
-offset_top = 248.0
-offset_right = 605.0
-offset_bottom = 301.0
-script = ExtResource("3_t4ff4")
+offset_left = 450.0
+offset_top = 211.0
+offset_right = 625.0
+offset_bottom = 269.0
+offset_transform_enabled = true
+texture_normal = ExtResource("4_w5vcv")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_d2d4f")
 
-[node name="TextureRect" type="TextureRect" parent="MenuScreen/ButtonManager/Quit" unique_id=363911309]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 3.0
-offset_right = 154.0
-offset_bottom = 49.0
-texture = ExtResource("6_6vw7e")
-expand_mode = 1
+[node name="Label" type="Label" parent="MenuScreen/ButtonManager/Quit" unique_id=608979269]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -37.0
+offset_right = 59.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_6vw7e")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LevelManager" type="Control" parent="MenuScreen" unique_id=1787445897]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Level1" type="Button" parent="MenuScreen/LevelManager" unique_id=1177718619]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 132.0
-offset_right = 171.0
-offset_bottom = 210.0
+[node name="Level1" type="TextureButton" parent="MenuScreen/LevelManager" unique_id=391177848]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -30.0
+offset_right = -130.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+texture_normal = SubResource("AtlasTexture_t4ff4")
+texture_pressed = SubResource("AtlasTexture_w5vcv")
+texture_disabled = SubResource("AtlasTexture_d2d4f")
+script = ExtResource("4_d2d4f")
+
+[node name="Label" type="Label" parent="MenuScreen/LevelManager/Level1" unique_id=1423224272]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Level 1"
+label_settings = SubResource("LabelSettings_qrfef")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuScreen/LevelManager/Level1" unique_id=1336901996]
-layout_mode = 0
-offset_right = 140.0
-offset_bottom = 74.0
+[node name="Level2" type="TextureButton" parent="MenuScreen/LevelManager" unique_id=1999825195]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+texture_normal = SubResource("AtlasTexture_t4ff4")
+texture_pressed = SubResource("AtlasTexture_w5vcv")
+texture_disabled = SubResource("AtlasTexture_d2d4f")
+script = ExtResource("4_d2d4f")
 
-[node name="Level2" type="Button" parent="MenuScreen/LevelManager" unique_id=2117028171]
-layout_mode = 0
-offset_left = 232.0
-offset_top = 130.0
-offset_right = 381.0
-offset_bottom = 213.0
+[node name="Label" type="Label" parent="MenuScreen/LevelManager/Level2" unique_id=626058627]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Level 2"
+label_settings = SubResource("LabelSettings_qrfef")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level3" type="Button" parent="MenuScreen/LevelManager" unique_id=798040556]
-layout_mode = 0
-offset_left = 435.0
-offset_top = 132.0
-offset_right = 591.0
-offset_bottom = 209.0
+[node name="Level3" type="TextureButton" parent="MenuScreen/LevelManager" unique_id=1447750492]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 130.0
+offset_top = -30.0
+offset_right = 250.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+texture_normal = SubResource("AtlasTexture_t4ff4")
+texture_pressed = SubResource("AtlasTexture_w5vcv")
+texture_disabled = SubResource("AtlasTexture_d2d4f")
+script = ExtResource("4_d2d4f")
+
+[node name="Label" type="Label" parent="MenuScreen/LevelManager/Level3" unique_id=483622288]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Level 3"
+label_settings = SubResource("LabelSettings_qrfef")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="OptionsPanel" parent="." unique_id=355889237 instance=ExtResource("8_t4ff4")]
 visible = false

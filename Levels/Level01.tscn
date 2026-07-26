@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://be6o1weacxoti" path="res://Shaders/rewind.gdshader" id="5_jgx74"]
 [ext_resource type="Texture2D" uid="uid://lnaw6o18lve5" path="res://Shaders/white.png" id="6_6m3et"]
 [ext_resource type="PackedScene" uid="uid://b70pb8nr044ud" path="res://Levels/StartArea.tscn" id="7_fyt5t"]
+[ext_resource type="PackedScene" uid="uid://cnkqxwxpeey08" path="res://UI/DefeatScreen.tscn" id="8_s42oh"]
 [ext_resource type="PackedScene" uid="uid://dxrq803gwyfos" path="res://Levels/platform.tscn" id="8_saryc"]
 [ext_resource type="PackedScene" uid="uid://cbl6hdllx5fj5" path="res://Levels/Obstacles/Mummy.tscn" id="9_c8o6p"]
 
@@ -77,10 +78,11 @@ size = Vector2(7, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8o6p"]
 size = Vector2(9560, 578)
 
-[node name="Level3" type="Node2D" unique_id=835439264 node_paths=PackedStringArray("player", "game_timer")]
+[node name="Level3" type="Node2D" unique_id=835439264 node_paths=PackedStringArray("player", "game_timer", "tilemap")]
 script = ExtResource("1_v44il")
 player = NodePath("CharacterBody2D")
 game_timer = NodePath("GameTimer")
+tilemap = NodePath("TerrainTileMapLayer")
 
 [node name="HourglassFinish" parent="." unique_id=310234343 node_paths=PackedStringArray("camera") instance=ExtResource("2_rg61p")]
 position = Vector2(1872, -1376)
@@ -131,6 +133,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_6m3et")
+
+[node name="DefeatScreen" parent="CanvasLayer" unique_id=720574116 instance=ExtResource("8_s42oh")]
+visible = false
+level_path = "res://Levels/Level01.tscn"
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1316068300]
 wait_time = 180.0
