@@ -45,10 +45,10 @@ func _ready() -> void:
 	Sceneswitcher.rewind.connect(_on_rewind)
 	
 	process_mode = Node.PROCESS_MODE_DISABLED
-	await get_tree().create_timer(0.1).timeout #2.0
+	await get_tree().create_timer(2).timeout #2.0
 	var tween = get_tree().create_tween()
 	tween.tween_property(camera, "position", player.camera.global_position, 6.0 )
-	await get_tree().create_timer(0.1).timeout #6.0
+	await get_tree().create_timer(6).timeout #6.0
 	#cam_player.play("camera_pan")
 	#await cam_player.animation_finished
 	#cam_player.queue_free()
