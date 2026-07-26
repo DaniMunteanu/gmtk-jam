@@ -7,13 +7,14 @@ extends CanvasLayer
 @onready var button_manager: Control = $MenuScreen/ButtonManager
 @onready var level_manager: Control = $MenuScreen/LevelManager
 
-@onready var start: Button = $MenuScreen/ButtonManager/Start
-@onready var quit: Button = $MenuScreen/ButtonManager/Quit
+@onready var start: TextureButton = $MenuScreen/ButtonManager/Start
+@onready var quit: TextureButton = $MenuScreen/ButtonManager/Quit
 
-@onready var level1: Button = $MenuScreen/LevelManager/Level1
-@onready var level2: Button = $MenuScreen/LevelManager/Level2
-@onready var level3: Button = $MenuScreen/LevelManager/Level3
+@onready var level1: TextureButton = $MenuScreen/LevelManager/Level1
+@onready var level2: TextureButton = $MenuScreen/LevelManager/Level2
+@onready var level3: TextureButton = $MenuScreen/LevelManager/Level3
 @export var menu_music: AudioStream
+
 func _ready() -> void:
 	level_manager.visible = false
 	_update_level_locks()
@@ -38,14 +39,12 @@ func _on_credits_pressed() -> void:
 	get_tree().change_scene_to_file(credits_scene_path)
 
 func _on_level_1_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/Level1.tscn")
-
+	get_tree().change_scene_to_file("res://Levels/Level01.tscn")
 
 func _on_level_2_pressed() -> void:
 	if not level2.disabled:
-		get_tree().change_scene_to_file("res://Levels/Level2.tscn")
-
+		get_tree().change_scene_to_file("res://Levels/Level02.tscn")
 
 func _on_level_3_pressed() -> void:
 	if not level3.disabled:
-		get_tree().change_scene_to_file("res://Levels/Level3.tscn")
+		get_tree().change_scene_to_file("res://Levels/level04.tscn")

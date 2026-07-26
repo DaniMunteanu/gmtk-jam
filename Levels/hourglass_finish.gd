@@ -25,6 +25,8 @@ func update_sand(time_left: float):
 
 func _on_victory_zone_left_body_entered(body: Node2D) -> void:
 	if body is Player:
+		cat.frame = 8
+		
 		level_won.emit()
 		
 		camera.make_current()
@@ -49,6 +51,8 @@ func _on_victory_zone_left_body_entered(body: Node2D) -> void:
 
 func _on_victory_zone_right_body_entered(body: Node2D) -> void:
 	if body is Player:
+		cat.frame = 8
+		
 		level_won.emit()
 		
 		camera.make_current()

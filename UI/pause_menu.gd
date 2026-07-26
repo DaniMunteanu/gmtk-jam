@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 @onready var options_panel = %OptionsPanel
-@onready var sfx_player = $SfxPlayer
 
 func _ready() -> void:
 	hide()

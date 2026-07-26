@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8qqhfsn3ov55"]
 
 [ext_resource type="Script" uid="uid://b3glp36buhcvu" path="res://UI/player_ui.gd" id="1_225y7"]
-[ext_resource type="Texture2D" uid="uid://hyarjjgh0mmt" path="res://Sprites/Button.png" id="2_ebmii"]
+[ext_resource type="Texture2D" uid="uid://hyarjjgh0mmt" path="res://Sprites/UI/Button.png" id="2_ebmii"]
 [ext_resource type="Script" uid="uid://bhko7dre32wi3" path="res://UI/resizable_button.gd" id="3_3xooj"]
 [ext_resource type="Texture2D" uid="uid://bjq8s8rej3rx" path="res://Sprites/HourglassAbilities/HourglassBorder.png" id="3_p41k2"]
 [ext_resource type="Script" uid="uid://fypexwu2lh6u" path="res://UI/hourglass.gd" id="3_puuxp"]
