@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://b5ek03hhbwkoj" path="res://Levels/level_1.gd" id="1_74nvi"]
 [ext_resource type="PackedScene" uid="uid://cm1wc6a1jk4u8" path="res://Levels/HourglassFinish.tscn" id="2_3l583"]
 [ext_resource type="Texture2D" uid="uid://djm0qmflsy3et" path="res://Sprites/Tilemap.png" id="2_ewqpd"]
+[ext_resource type="AudioStream" uid="uid://bg3xpbi0a8ioh" path="res://Audio/6. Ash and Oasis.mp3" id="2_p3bok"]
 [ext_resource type="PackedScene" uid="uid://bfmnrnrcy7ela" path="res://Character/Player.tscn" id="3_3l583"]
+[ext_resource type="AudioStream" uid="uid://d2ep706smfecc" path="res://Audio/GAME_OVER_SONG.mp3" id="3_8lju6"]
 [ext_resource type="PackedScene" uid="uid://bixjs3x33p0ba" path="res://UI/HourglassUI.tscn" id="4_8nokp"]
 [ext_resource type="Shader" uid="uid://be6o1weacxoti" path="res://Shaders/rewind.gdshader" id="5_7xp2a"]
 [ext_resource type="Texture2D" uid="uid://lnaw6o18lve5" path="res://Shaders/white.png" id="6_p3bok"]
@@ -93,6 +95,8 @@ script = ExtResource("1_74nvi")
 player = NodePath("CharacterBody2D")
 game_timer = NodePath("GameTimer")
 tilemap = NodePath("BackgroundTileMapLayer")
+level_music = ExtResource("2_p3bok")
+game_over_music = ExtResource("3_8lju6")
 
 [node name="HourglassFinish" parent="." unique_id=310234343 node_paths=PackedStringArray("camera") instance=ExtResource("2_3l583")]
 position = Vector2(16, -544)
