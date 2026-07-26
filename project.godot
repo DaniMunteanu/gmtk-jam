@@ -13,7 +13,6 @@ config_version=5
 config/name="gmtk-jam"
 run/main_scene="uid://cg14wal0dj7xw"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
