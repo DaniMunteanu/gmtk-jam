@@ -4,6 +4,8 @@ extends CanvasLayer
 @export var credits_scene_path : String
 
 @onready var options_panel = $OptionsPanel
+@onready var how_to_play_panel: Control = $HowToPlay
+
 @onready var button_manager: Control = $MenuScreen/ButtonManager
 @onready var level_manager: Control = $MenuScreen/LevelManager
 
@@ -48,3 +50,6 @@ func _on_level_2_pressed() -> void:
 func _on_level_3_pressed() -> void:
 	if not level3.disabled:
 		get_tree().change_scene_to_file("res://Levels/level04.tscn")
+
+func _on_how_to_play_pressed() -> void:
+	how_to_play_panel.show()
