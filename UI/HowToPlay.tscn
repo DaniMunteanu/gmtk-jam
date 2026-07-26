@@ -69,13 +69,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -284.0
+offset_left = -281.0
 offset_top = 102.0
 offset_right = 286.0
 offset_bottom = 312.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 24
-text = "	Your goal is to reach the cat trapped in the hourglass before time runs out. Throughout the levels, there are obstacles you can avoid by using the 3 abilities displayed at the top of the screen.
+theme_override_font_sizes/normal_font_size = 22
+text = "	Your goal is to reach the cat trapped in the hourglass before time runs out. Throughout the levels, there are obstacles you can avoid by using the 3 abilities displayed at the top of the screen. 
+	Try not to get hit or use abilities too often. This will consume your remainig time!
 	Controls:
 		- Movement: WASD
 		- Jump: Space

@@ -6,7 +6,8 @@ func _ready() -> void:
 	mouse_exited.connect(zoom_out)
 
 func zoom_in():
-	offset_transform_scale = Vector2(1.2,1.2)
+	if disabled == false:
+		offset_transform_scale = Vector2(1.2,1.2)
 	
 func zoom_out():
 	offset_transform_scale = Vector2(1,1)

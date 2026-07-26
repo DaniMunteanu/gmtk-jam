@@ -1,6 +1,8 @@
 extends Node2D
 class_name Level
 
+@export var level_index: int = 1
+
 @export var player: Player
 @export var game_timer: Timer
 @export var win_path: String
@@ -11,7 +13,6 @@ class_name Level
 @onready var hourglass_ui: HourglassUI = $CanvasLayer/HourglassUI
 @onready var hourglass_finish: HourglassFinish = $HourglassFinish
 @onready var rewind_texture: TextureRect = $CanvasLayer/TextureRect
-@onready var heartbeat: AudioStreamPlayer = $Audio/heartbeat
 
 @onready var defeat_screen: DefeatScreen = $CanvasLayer/DefeatScreen
 @export var level_music: AudioStream
@@ -75,6 +76,7 @@ func _process(delta: float) -> void:
 		#here connection with the progress bar
 
 func _on_level_won():
+	LevelTracker.levels_completed[level_index - 1] = true
 	level_completed = true
 	game_timer.stop()
 	await get_tree().create_timer(1).timeout

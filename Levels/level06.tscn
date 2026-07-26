@@ -98,6 +98,7 @@ size = Vector2(691, 457)
 
 [node name="Level" type="Node2D" unique_id=835439264 node_paths=PackedStringArray("player", "game_timer", "tilemap")]
 script = ExtResource("1_i5aco")
+level_index = 6
 player = NodePath("CharacterBody2D")
 game_timer = NodePath("GameTimer")
 tilemap = NodePath("TerrainTileMapLayer")

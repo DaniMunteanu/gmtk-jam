@@ -20,7 +20,6 @@ var game_timer: Timer
 @export_category("Upgrades")
 @export var upgrade_arr: Array[Upgrade]
 
-
 @export_category("Movement")
 @export var sprite: AnimatedSprite2D
 @export var CoyoteTimer : Timer
@@ -41,11 +40,15 @@ const FRICTION: float = 10.0
 #vars for tp dash
 var look_dir_x: int = 1
 var can_tp: bool = false
+var is_dashing: bool = false
 
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if is_dashing:
+		return
+	
 	var x_input: float = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var velocity_weight: float = delta * (acceleration if x_input else FRICTION)
 	velocity.x = lerp(velocity.x, x_input * max_speed, velocity_weight)
@@ -125,11 +128,30 @@ func _input(_event: InputEvent) -> void:
 		if look_dir_x == 1:
 			if %RightRaycast.get_collider() != null and %RightRaycast.get_collider().is_in_group("solid"):
 				return
+			
+			is_dashing = true
+			sprite.play("teleport_dash")
+			await sprite.animation_finished
+			
 			global_position += %RightRaycast.target_position
+			
+			sprite.play_backwards("teleport_dash")
+			await sprite.animation_finished
+			is_dashing = false
+			
 		elif look_dir_x == -1:
 			if %LeftRaycast.get_collider() != null and %LeftRaycast.get_collider().is_in_group("solid"):
 				return
+			
+			is_dashing = true
+			sprite.play("teleport_dash")
+			await sprite.animation_finished
+			
 			global_position += %LeftRaycast.target_position
+			
+			sprite.play_backwards("teleport_dash")
+			await sprite.animation_finished
+			is_dashing = false
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	Sceneswitcher.rewind.emit()

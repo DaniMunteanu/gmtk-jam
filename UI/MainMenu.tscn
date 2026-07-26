@@ -5,9 +5,22 @@
 [ext_resource type="Script" uid="uid://bhko7dre32wi3" path="res://UI/resizable_button.gd" id="4_d2d4f"]
 [ext_resource type="Texture2D" uid="uid://0uoe05hb0n22" path="res://Sprites/UI/MenuButton.png" id="4_w5vcv"]
 [ext_resource type="Texture2D" uid="uid://hyarjjgh0mmt" path="res://Sprites/UI/Button.png" id="6_obtq6"]
+[ext_resource type="Script" uid="uid://dqf1dq3nskbyd" path="res://UI/level_manager.gd" id="6_w5vcv"]
 [ext_resource type="AudioStream" uid="uid://c8rf37l1a0snp" path="res://Audio/2. Scorchlight Mirage.ogg" id="7_obtq6"]
 [ext_resource type="PackedScene" uid="uid://ibs0ifbu0h7v" path="res://Levels/options_panel.tscn" id="8_t4ff4"]
 [ext_resource type="PackedScene" uid="uid://dqsiikcmggwe5" path="res://UI/HowToPlay.tscn" id="8_w5vcv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5vcv"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+outline_color = Color(1, 0.8, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d2d4f"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+outline_color = Color(1, 0.8, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6vw7e"]
 font_size = 32
@@ -28,6 +41,10 @@ region = Rect2(0, 60, 120, 60)
 [sub_resource type="LabelSettings" id="LabelSettings_qrfef"]
 font_size = 36
 
+[sub_resource type="LabelSettings" id="LabelSettings_csrb3"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
 [node name="MainMenu" type="CanvasLayer" unique_id=26005483]
 script = ExtResource("1_otjfi")
 menu_music = ExtResource("7_obtq6")
@@ -37,6 +54,42 @@ offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("3_w5vcv")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="MenuScreen" unique_id=1434141323]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -185.0
+offset_right = 55.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CatDown"
+label_settings = SubResource("LabelSettings_w5vcv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MenuScreen/Label" unique_id=485287330]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.5
+offset_top = 7.5
+offset_right = 168.5
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nine Lives in the Hourglass"
+label_settings = SubResource("LabelSettings_d2d4f")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonManager" type="Control" parent="MenuScreen" unique_id=1990474681]
 anchors_preset = 0
@@ -167,8 +220,7 @@ label_settings = SubResource("LabelSettings_6vw7e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelManager" type="Control" parent="MenuScreen" unique_id=1787445897]
-visible = false
+[node name="LevelManager" type="Control" parent="MenuScreen" unique_id=1787445897 node_paths=PackedStringArray("level_buttons")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -181,6 +233,8 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_w5vcv")
+level_buttons = [NodePath("Level1"), NodePath("Level2"), NodePath("Level3"), NodePath("Level4"), NodePath("Level5"), NodePath("Level6")]
 
 [node name="Level1" type="TextureButton" parent="MenuScreen/LevelManager" unique_id=391177848]
 texture_filter = 1
@@ -191,9 +245,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.0
-offset_top = -30.0
+offset_top = -74.0
 offset_right = -130.0
-offset_bottom = 30.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
@@ -229,9 +283,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -60.0
-offset_top = -30.0
+offset_top = -74.0
 offset_right = 60.0
-offset_bottom = 30.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
@@ -267,9 +321,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 130.0
-offset_top = -30.0
+offset_top = -74.0
 offset_right = 250.0
-offset_bottom = 30.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
@@ -296,6 +350,158 @@ label_settings = SubResource("LabelSettings_qrfef")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Level4" type="TextureButton" parent="MenuScreen/LevelManager" unique_id=1635941704]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = 28.0
+offset_right = -132.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+texture_normal = SubResource("AtlasTexture_t4ff4")
+texture_pressed = SubResource("AtlasTexture_w5vcv")
+texture_disabled = SubResource("AtlasTexture_d2d4f")
+script = ExtResource("4_d2d4f")
+
+[node name="Label" type="Label" parent="MenuScreen/LevelManager/Level4" unique_id=2062228793]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 4"
+label_settings = SubResource("LabelSettings_qrfef")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level5" type="TextureButton" parent="MenuScreen/LevelManager" unique_id=358094964]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 28.0
+offset_right = 60.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+texture_normal = SubResource("AtlasTexture_t4ff4")
+texture_pressed = SubResource("AtlasTexture_w5vcv")
+texture_disabled = SubResource("AtlasTexture_d2d4f")
+script = ExtResource("4_d2d4f")
+
+[node name="Label" type="Label" parent="MenuScreen/LevelManager/Level5" unique_id=121469940]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 5"
+label_settings = SubResource("LabelSettings_qrfef")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level6" type="TextureButton" parent="MenuScreen/LevelManager" unique_id=2134853321]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 129.0
+offset_top = 28.0
+offset_right = 249.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+texture_normal = SubResource("AtlasTexture_t4ff4")
+texture_pressed = SubResource("AtlasTexture_w5vcv")
+texture_disabled = SubResource("AtlasTexture_d2d4f")
+script = ExtResource("4_d2d4f")
+
+[node name="Label" type="Label" parent="MenuScreen/LevelManager/Level6" unique_id=583567669]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 6"
+label_settings = SubResource("LabelSettings_qrfef")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Close" type="TextureButton" parent="MenuScreen/LevelManager" unique_id=1209212444]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.5
+offset_top = 86.0
+offset_right = 87.5
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+texture_normal = ExtResource("4_w5vcv")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_d2d4f")
+
+[node name="Label" type="Label" parent="MenuScreen/LevelManager/Close" unique_id=250867312]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -37.0
+offset_right = 59.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Close"
+label_settings = SubResource("LabelSettings_csrb3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="OptionsPanel" parent="." unique_id=355889237 instance=ExtResource("8_t4ff4")]
 visible = false
 
@@ -306,6 +512,10 @@ visible = false
 [connection signal="pressed" from="MenuScreen/ButtonManager/HowToPlay" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="MenuScreen/ButtonManager/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MenuScreen/ButtonManager/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="MenuScreen/LevelManager/Level1" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="MenuScreen/LevelManager/Level2" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="MenuScreen/LevelManager/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="MenuScreen/LevelManager/Level1" to="MenuScreen/LevelManager" method="_on_level_1_pressed"]
+[connection signal="pressed" from="MenuScreen/LevelManager/Level2" to="MenuScreen/LevelManager" method="_on_level_2_pressed"]
+[connection signal="pressed" from="MenuScreen/LevelManager/Level3" to="MenuScreen/LevelManager" method="_on_level_3_pressed"]
+[connection signal="pressed" from="MenuScreen/LevelManager/Level4" to="MenuScreen/LevelManager" method="_on_level_4_pressed"]
+[connection signal="pressed" from="MenuScreen/LevelManager/Level5" to="MenuScreen/LevelManager" method="_on_level_5_pressed"]
+[connection signal="pressed" from="MenuScreen/LevelManager/Level6" to="MenuScreen/LevelManager" method="_on_level_6_pressed"]
+[connection signal="pressed" from="MenuScreen/LevelManager/Close" to="." method="_on_close_pressed"]

@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://b11at33lrjvoh" path="res://Sprites/Player/PlayerIdle.png" id="2_o1y46"]
 [ext_resource type="Shader" uid="uid://cqgojr7eqweu" path="res://Shaders/PlayerShader.gdshader" id="2_p4yhq"]
 [ext_resource type="PackedScene" uid="uid://x0uxjqbf4m8v" path="res://Character/upgrade.tscn" id="3_1ju47"]
-[ext_resource type="Texture2D" uid="uid://cbmvtrd3wp5xu" path="res://Sprites/Player/PlayerMidAir.png" id="3_qolio"]
+[ext_resource type="Texture2D" uid="uid://ox1qq8bfxnep" path="res://Sprites/Player/PlayerMidAir (1).png" id="4_i15ld"]
 [ext_resource type="Texture2D" uid="uid://chjkj1gfvkuyg" path="res://Sprites/Player/PlayerWalk.png" id="4_y83ax"]
 [ext_resource type="Script" uid="uid://cca2wbnvhtiu7" path="res://Character/upgrade_one.gd" id="4_ynroq"]
+[ext_resource type="Texture2D" uid="uid://dcababgipwlhv" path="res://Sprites/Player/PlayerDash.png" id="5_iir43"]
 [ext_resource type="Script" uid="uid://dtcrq6h6ajx5k" path="res://Character/upgrade_two.gd" id="5_v6d5b"]
 [ext_resource type="Script" uid="uid://bn85yctxwce5g" path="res://Character/upgrade_three.gd" id="6_55lj8"]
 [ext_resource type="PackedScene" uid="uid://c8qqhfsn3ov55" path="res://UI/playerUI.tscn" id="7_5ydrh"]
@@ -32,6 +33,58 @@ region = Rect2(0, 0, 32, 64)
 atlas = ExtResource("2_o1y46")
 region = Rect2(32, 0, 32, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk8it"]
+atlas = ExtResource("5_iir43")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i15ld"]
+atlas = ExtResource("5_iir43")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcy4g"]
+atlas = ExtResource("5_iir43")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b72x0"]
+atlas = ExtResource("5_iir43")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62dke"]
+atlas = ExtResource("5_iir43")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8bqw"]
+atlas = ExtResource("5_iir43")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6mp6"]
+atlas = ExtResource("5_iir43")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6epx"]
+atlas = ExtResource("5_iir43")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctys4"]
+atlas = ExtResource("5_iir43")
+region = Rect2(96, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bysdj"]
+atlas = ExtResource("5_iir43")
+region = Rect2(128, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs7we"]
+atlas = ExtResource("5_iir43")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjaks"]
+atlas = ExtResource("5_iir43")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im8re"]
+atlas = ExtResource("5_iir43")
+region = Rect2(64, 128, 32, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo5vu"]
 atlas = ExtResource("4_y83ax")
 region = Rect2(0, 0, 42, 64)
@@ -55,11 +108,55 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qolio")
+"texture": ExtResource("4_i15ld")
 }],
 "loop": 1,
 "name": &"midair",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk8it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i15ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcy4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b72x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62dke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8bqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6mp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6epx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctys4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bysdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs7we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjaks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im8re")
+}],
+"loop": 0,
+"name": &"teleport_dash",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -76,6 +173,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gt56a"]
 radius = 11.0
 height = 66.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_iir43"]
+font_size = 32
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ragau"]
 radius = 15.0
@@ -133,6 +233,7 @@ _data = {
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1123172477 node_paths=PackedStringArray("player_ui", "upgrade_arr", "sprite", "CoyoteTimer", "JumpBufferTimer")]
 z_index = 10
+texture_filter = 1
 script = ExtResource("1_oo13o")
 player_ui = NodePath("CanvasLayer")
 upgrade_arr = [NodePath("UpgradeOne"), NodePath("UpgradeTwo"), NodePath("UpgradeThree")]
@@ -145,6 +246,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_w0h0a")
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_13qdw")
+animation = &"midair"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=636502317]
 position = Vector2(-1, 0)
@@ -178,7 +280,7 @@ one_shot = true
 
 [node name="UpgradeTwo" type="Node" parent="." unique_id=1004038602 node_paths=PackedStringArray("player", "cooldown_timer", "active_timer")]
 script = ExtResource("5_v6d5b")
-speed_upgrade = 100.0
+speed_upgrade = 150.0
 accel_upgrade = 20.0
 player = NodePath("..")
 cooldown_timer = NodePath("CooldownTimer")
@@ -194,8 +296,9 @@ one_shot = true
 wait_time = 9.0
 one_shot = true
 
-[node name="UpgradeThree" type="Node" parent="." unique_id=2030889772 node_paths=PackedStringArray("player", "cooldown_timer", "active_timer")]
+[node name="UpgradeThree" type="Node" parent="." unique_id=2030889772 node_paths=PackedStringArray("shift_label", "player", "cooldown_timer", "active_timer")]
 script = ExtResource("6_55lj8")
+shift_label = NodePath("../CanvasLayer/ShiftToDash")
 player = NodePath("..")
 cooldown_timer = NodePath("CooldownTimer")
 active_timer = NodePath("ActiveTimer")
@@ -213,6 +316,22 @@ one_shot = true
 [node name="CanvasLayer" parent="." unique_id=1722666215 node_paths=PackedStringArray("active_timer_arr", "player") instance=ExtResource("7_5ydrh")]
 active_timer_arr = [NodePath("../UpgradeOne/ActiveTimer2"), NodePath("../UpgradeTwo/ActiveTimer"), NodePath("../UpgradeThree/ActiveTimer")]
 player = NodePath("..")
+
+[node name="ShiftToDash" type="Label" parent="CanvasLayer" unique_id=602591753]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -60.0
+offset_right = 76.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shift to Dash"
+label_settings = SubResource("LabelSettings_iir43")
 
 [node name="RightRaycast" type="RayCast2D" parent="." unique_id=1092283067]
 unique_name_in_owner = true
